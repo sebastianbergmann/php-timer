@@ -68,16 +68,6 @@ class PHP_Timer
     }
 
     /**
-     * Returns the currently elapsed time.
-     *
-     * @return float
-     */
-    public static function current()
-    {
-        return microtime(TRUE) - self::$startTimes[count(self::$startTimes)-1];
-    }
-
-    /**
      * Stops the timer and returns the elapsed time.
      *
      * @return float
