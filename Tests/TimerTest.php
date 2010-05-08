@@ -59,6 +59,9 @@ require_once dirname(dirname(__FILE__)) . '/PHP/Timer.php';
  */
 class PHP_TimerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers PHP_Timer::secondsToTimeString
+     */
     public function testSecondsToTimeString()
     {
         $this->assertEquals('0 seconds', PHP_Timer::secondsToTimeString(0));
