@@ -57,6 +57,9 @@
  */
 class PHP_Timer
 {
+    /**
+     * @var array
+     */
     protected static $startTimes = array();
 
     /**
