@@ -66,7 +66,7 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testStartStop()
     {
         PHP_Timer::start();
-        $this->assertType('float', PHP_Timer::stop());
+        $this->assertInternalType('float', PHP_Timer::stop());
     }
 
     /**
