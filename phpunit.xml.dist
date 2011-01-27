@@ -18,6 +18,9 @@
   <filter>
     <whitelist addUncoveredFilesFromWhitelist="true">
       <directory suffix=".php">PHP</directory>
+      <exclude>
+        <file>PHP/Timer/Autoload.php</file>
+      </exclude>
     </whitelist>
   </filter>
 </phpunit>
