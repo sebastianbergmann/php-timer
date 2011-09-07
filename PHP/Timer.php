@@ -63,6 +63,11 @@ class PHP_Timer
     protected static $startTimes = array();
 
     /**
+     * @var float
+     */
+    public static $requestTime;
+
+    /**
      * Starts the timer.
      */
     public static function start()
@@ -123,7 +128,7 @@ class PHP_Timer
      */
     public static function timeSinceStartOfRequest()
     {
-        return self::secondsToTimeString(time() - $_SERVER['REQUEST_TIME']);
+        return self::secondsToTimeString(time() - self::$requestTime);
     }
 
     /**
@@ -139,4 +144,10 @@ class PHP_Timer
           memory_get_peak_usage(TRUE) / 1048576
         );
     }
+}
+
+if (isset($_SERVER['REQUEST_TIME'])) {
+    PHP_Timer::$requestTime = $_SERVER['REQUEST_TIME'];
+} else {
+    PHP_Timer::$requestTime = time();
 }
