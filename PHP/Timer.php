@@ -146,8 +146,14 @@ class PHP_Timer
     }
 }
 
-if (isset($_SERVER['REQUEST_TIME'])) {
+if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
     PHP_Timer::$requestTime = $_SERVER['REQUEST_TIME'];
-} else {
+}
+
+else if (isset($_SERVER['REQUEST_TIME'])) {
+    PHP_Timer::$requestTime = $_SERVER['REQUEST_TIME'];
+}
+
+else {
     PHP_Timer::$requestTime = time();
 }
