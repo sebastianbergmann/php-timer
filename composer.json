@@ -1,0 +1,17 @@
+{
+    "name": "pear/PHP_Timer",
+    "description": "Utility class for timing",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "Sebastian Bergmann",
+            "email":"sb@sebastian-bergmann.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.7"
+    },
+    "autoload": {
+        "psr-0": { "PHP_Timer": "" }
+    }
+}
