@@ -1,7 +1,7 @@
 {
-    "name": "pear/PHP_Timer",
+    "name": "sebastianbergmann/php-timer",
     "description": "Utility class for timing",
-    "license": "BSD",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Sebastian Bergmann",
@@ -12,6 +12,6 @@
         "php": ">=5.2.7"
     },
     "autoload": {
-        "psr-0": { "PHP_Timer": "" }
+        "classmap": ["PHP/Timer.php"]
     }
 }
