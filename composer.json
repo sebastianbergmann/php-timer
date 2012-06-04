@@ -1,0 +1,17 @@
+{
+    "name": "sebastianbergmann/php-timer",
+    "description": "Utility class for timing",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Sebastian Bergmann",
+            "email":"sb@sebastian-bergmann.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.7"
+    },
+    "autoload": {
+        "classmap": ["PHP/Timer.php"]
+    }
+}
