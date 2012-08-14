@@ -20,6 +20,11 @@
     "config": {
         "bin-dir": "bin"
     },
+    "autoload": {
+        "psr-0": {
+            "PHP_*": "phpunit"
+        }
+    },
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
