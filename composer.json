@@ -21,7 +21,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "classmap": ["PHP/"]
+        "psr-0": {
+            "PHP_Timer": ""
+        },
+        "files": ["PHP/Timer/Autoload.php"]
     },
     "minimum-stability": "dev",
     "extra": {
