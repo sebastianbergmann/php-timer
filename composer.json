@@ -6,31 +6,29 @@
         "timer"
     ],
     "homepage": "http://www.phpunit.de/",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Sebastian Bergmann",
-            "email": "sebastian@phpunit.de",
-            "homepage": "http://www.phpunit.de/"
+            "email": "sb@sebastian-bergmann.de",
+            "role": "lead"
         }
     ],
-    "license": "BSD-3-Clause",
+    "version": "1.0.2",
+    "time": "2011-09-07",
+    "support": {
+        "issues": "https://github.com/sebastianbergmann/php-timer/issues",
+        "irc": "irc://irc.freenode.net/phpunit"
+    },
     "require": {
         "php": ">=5.2.7"
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "autoload": {
-        "psr-0": {
-            "PHP_Timer": ""
-        },
-        "files": ["PHP/Timer/Autoload.php"]
+        "files": [
+            "PHP/Timer/Autoload.php"
+        ]
     },
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    }
-
+    "include-path": [
+        ""
+    ]
 }
