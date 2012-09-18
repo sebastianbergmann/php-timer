@@ -1,0 +1,34 @@
+{
+    "name": "phpunit/php-timer",
+    "description": "Utility class for timing",
+    "type": "library",
+    "keywords": [
+        "timer"
+    ],
+    "homepage": "http://www.phpunit.de/",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Sebastian Bergmann",
+            "email": "sb@sebastian-bergmann.de",
+            "role": "lead"
+        }
+    ],
+    "version": "1.0.2",
+    "time": "2011-09-07",
+    "support": {
+        "issues": "https://github.com/sebastianbergmann/php-timer/issues",
+        "irc": "irc://irc.freenode.net/phpunit"
+    },
+    "require": {
+        "php": ">=5.2.7"
+    },
+    "autoload": {
+        "files": [
+            "PHP/Timer/Autoload.php"
+        ]
+    },
+    "include-path": [
+        ""
+    ]
+}
