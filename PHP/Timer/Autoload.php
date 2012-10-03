@@ -43,33 +43,24 @@
  * @since      File available since Release 1.1.0
  */
 
-function php_timer_autoload($class = NULL) {
-    static $classes = NULL;
-    static $path = NULL;
+spl_autoload_register(
+  function ($class)
+  {
+      static $classes = NULL;
+      static $path = NULL;
 
-    if ($classes === NULL) {
-        $classes = array(
-          'php_timer' => '/Timer.php'
-        );
+      if ($classes === NULL) {
+          $classes = array(
+            'php_timer' => '/Timer.php'
+          );
 
-        $path = dirname(dirname(__FILE__));
-    }
+          $path = dirname(dirname(__FILE__));
+      }
 
-    if ($class === NULL) {
-        $result = array(__FILE__);
+      $cn = strtolower($class);
 
-        foreach ($classes as $file) {
-            $result[] = $path . $file;
-        }
-
-        return $result;
-    }
-
-    $cn = strtolower($class);
-
-    if (isset($classes[$cn])) {
-        require $path . $classes[$cn];
-    }
-}
-
-spl_autoload_register('php_timer_autoload');
+      if (isset($classes[$cn])) {
+          require $path . $classes[$cn];
+      }
+  }
+);
