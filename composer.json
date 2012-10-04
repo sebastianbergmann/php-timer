@@ -14,8 +14,6 @@
             "role": "lead"
         }
     ],
-    "version": "1.0.3",
-    "time": "2012-09-23",
     "support": {
         "issues": "https://github.com/sebastianbergmann/php-timer/issues",
         "irc": "irc://irc.freenode.net/phpunit"
@@ -24,8 +22,8 @@
         "php": ">=5.2.7"
     },
     "autoload": {
-        "files": [
-            "PHP/Timer/Autoload.php"
+        "classmap": [
+            "PHP/"
         ]
     },
     "include-path": [

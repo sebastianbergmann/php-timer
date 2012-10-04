@@ -9,9 +9,11 @@
         "irc": "irc://irc.freenode.net/phpunit"
     },
     "autoload": {
-        "files": [ "PHP/Timer/Autoload.php" ]
+        "classmap": [ "PHP/" ]
     },
     "include_path": [
         ""
-    ]
+    ],
+    "version": false,
+    "time": false
 }
