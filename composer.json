@@ -19,7 +19,7 @@
         "irc": "irc://irc.freenode.net/phpunit"
     },
     "require": {
-        "php": ">=5.2.7"
+        "php": ">=5.3.3"
     },
     "autoload": {
         "classmap": [
