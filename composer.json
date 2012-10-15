@@ -5,7 +5,7 @@
     "keywords": [
         "timer"
     ],
-    "homepage": "http://www.phpunit.de/",
+    "homepage": "https://github.com/sebastianbergmann/php-timer/",
     "license": "BSD-3-Clause",
     "authors": [
         {
