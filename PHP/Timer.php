@@ -128,7 +128,7 @@ class PHP_Timer
      */
     public static function timeSinceStartOfRequest()
     {
-        return self::secondsToTimeString(time() - self::$requestTime);
+        return self::secondsToTimeString(microtime(TRUE) - self::$requestTime);
     }
 
     /**
@@ -155,5 +155,5 @@ else if (isset($_SERVER['REQUEST_TIME'])) {
 }
 
 else {
-    PHP_Timer::$requestTime = time();
+    PHP_Timer::$requestTime = microtime(TRUE);
 }
