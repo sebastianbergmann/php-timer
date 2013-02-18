@@ -76,44 +76,14 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers PHP_Timer::secondsToTimeString
+     * @covers       PHP_Timer::secondsToTimeString
+     * @dataProvider secondsProvider
      */
-    public function testSecondsToTimeString()
+    public function testSecondsToTimeString($string, $seconds)
     {
-        $this->assertEquals('0 ms', $this->timer->secondsToTimeString(0));
-        $this->assertEquals('1 ms', $this->timer->secondsToTimeString(.001));
-        $this->assertEquals('10 ms', $this->timer->secondsToTimeString(.01));
-        $this->assertEquals('100 ms', $this->timer->secondsToTimeString(.1));
-        $this->assertEquals('999 ms', $this->timer->secondsToTimeString(.999));
-        $this->assertEquals('999 ms', $this->timer->secondsToTimeString(.9999));
-        $this->assertEquals('1 second', $this->timer->secondsToTimeString(1));
-        $this->assertEquals('2 seconds', $this->timer->secondsToTimeString(2));
-        $this->assertEquals('59.9 seconds', $this->timer->secondsToTimeString(59.9));
-        $this->assertEquals('59.99 seconds', $this->timer->secondsToTimeString(59.99));
-        $this->assertEquals('59.999 seconds', $this->timer->secondsToTimeString(59.999));
-        $this->assertEquals('59.999 seconds', $this->timer->secondsToTimeString(59.9999));
-        $this->assertEquals('59.001 seconds', $this->timer->secondsToTimeString(59.001));
-        $this->assertEquals('59.01 seconds', $this->timer->secondsToTimeString(59.01));
-        $this->assertEquals('01:00:000', $this->timer->secondsToTimeString(60));
-        $this->assertEquals('01:01:000', $this->timer->secondsToTimeString(61));
-        $this->assertEquals('02:00:000', $this->timer->secondsToTimeString(120));
-        $this->assertEquals('02:01:000', $this->timer->secondsToTimeString(121));
-        $this->assertEquals('59:59:900', $this->timer->secondsToTimeString(3599.9));
-        $this->assertEquals('59:59:990', $this->timer->secondsToTimeString(3599.99));
-        $this->assertEquals('59:59:999', $this->timer->secondsToTimeString(3599.999));
-        $this->assertEquals('59:59:999', $this->timer->secondsToTimeString(3599.9999));
-        $this->assertEquals('59:59:001', $this->timer->secondsToTimeString(3599.001));
-        $this->assertEquals('59:59:010', $this->timer->secondsToTimeString(3599.01));
-        $this->assertEquals('01:00:00:000', $this->timer->secondsToTimeString(3600));
-        $this->assertEquals('01:00:01:000', $this->timer->secondsToTimeString(3601));
-        $this->assertEquals('01:00:01:900', $this->timer->secondsToTimeString(3601.9));
-        $this->assertEquals('01:00:01:990', $this->timer->secondsToTimeString(3601.99));
-        $this->assertEquals('01:00:01:999', $this->timer->secondsToTimeString(3601.999));
-        $this->assertEquals('01:00:01:999', $this->timer->secondsToTimeString(3601.9999));
-        $this->assertEquals('01:00:59:999', $this->timer->secondsToTimeString(3659.9999));
-        $this->assertEquals('01:00:59:001', $this->timer->secondsToTimeString(3659.001));
-        $this->assertEquals('01:00:59:010', $this->timer->secondsToTimeString(3659.01));
-        $this->assertEquals('01:59:59:999', $this->timer->secondsToTimeString(7199.9999));
+        $this->assertEquals(
+          $string, $this->timer->secondsToTimeString($seconds)
+        );
     }
 
     /**
@@ -134,6 +104,46 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     {
         $this->assertStringMatchesFormat(
           'Time: %s, Memory: %s', $this->timer->resourceUsage()
+        );
+    }
+
+    public function secondsProvider()
+    {
+        return array(
+          array('0 ms', 0),
+          array('1 ms', .001),
+          array('10 ms', .01),
+          array('100 ms', .1),
+          array('999 ms', .999),
+          array('999 ms', .9999),
+          array('1 second', 1),
+          array('2 seconds', 2),
+          array('59.9 seconds', 59.9),
+          array('59.99 seconds', 59.99),
+          array('59.999 seconds', 59.999),
+          array('59.999 seconds', 59.9999),
+          array('59.001 seconds', 59.001),
+          array('59.01 seconds', 59.01),
+          array('01:00:000', 60),
+          array('01:01:000', 61),
+          array('02:00:000', 120),
+          array('02:01:000', 121),
+          array('59:59:900', 3599.9),
+          array('59:59:990', 3599.99),
+          array('59:59:999', 3599.999),
+          array('59:59:999', 3599.9999),
+          array('59:59:001', 3599.001),
+          array('59:59:010', 3599.01),
+          array('01:00:00:000', 3600),
+          array('01:00:01:000', 3601),
+          array('01:00:01:900', 3601.9),
+          array('01:00:01:990', 3601.99),
+          array('01:00:01:999', 3601.999),
+          array('01:00:01:999', 3601.9999),
+          array('01:00:59:999', 3659.9999),
+          array('01:00:59:001', 3659.001),
+          array('01:00:59:010', 3659.01),
+          array('01:59:59:999', 7199.9999),
         );
     }
 }
