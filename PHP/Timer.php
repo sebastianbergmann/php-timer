@@ -60,6 +60,15 @@ class PHP_Timer
     /**
      * @var array
      */
+    private static $times = array(
+      'hour'   => 3600000,
+      'minute' => 60000,
+      'second' => 1000
+    );
+
+    /**
+     * @var array
+     */
     private $startTimes = array();
 
     /**
@@ -107,37 +116,16 @@ class PHP_Timer
      */
     public function secondsToTimeString($time)
     {
-        $buffer = '';
+        $ms = round($time * 1000);
 
-        $time    = floor($time * 1000.0) / 1000.0;
-        $hours   = sprintf('%02d', ($time >= 3600) ? floor($time / 3600) : 0);
-        $minutes = sprintf(
-                     '%02d',
-                     ($time >= 60)   ? floor($time /   60) - 60 * $hours : 0
-                   );
-        $seconds = sprintf('%06.3F', $time - 60 * 60 * $hours - 60 * $minutes);
-
-        if ($hours == 0 && $minutes == 0) {
-            if ($seconds < 1) {
-                $buffer = ($seconds * 1000) . ' ms';
-            } else {
-                $seconds = (float)$seconds;
-
-                $buffer .= $seconds . ' second';
-
-                if ($seconds != '1') {
-                    $buffer .= 's';
-                }
+        foreach (self::$times as $unit => $value) {
+            if ($ms >= $value) {
+                $time = floor($ms / $value * 100.0) / 100.0;
+                return $time . ' ' . ($time == 1 ? $unit : $unit . 's');
             }
-        } else {
-            if ($hours > 0) {
-                $buffer = $hours . ':';
-            }
-
-            $buffer .= $minutes . ':' . str_replace('.', ':', $seconds);
         }
 
-        return $buffer;
+        return $ms . ' ms';
     }
 
     /**
