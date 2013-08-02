@@ -59,20 +59,13 @@ require_once dirname(dirname(__FILE__)) . '/PHP/Timer.php';
  */
 class PHP_TimerTest extends PHPUnit_Framework_TestCase
 {
-    private $timer;
-
-    protected function setUp()
-    {
-        $this->timer = new PHP_Timer;
-    }
-
     /**
      * @covers PHP_Timer::start
      * @covers PHP_Timer::stop
      */
     public function testStartStop()
     {
-        $this->assertInternalType('float', $this->timer->stop());
+        $this->assertInternalType('float', PHP_Timer::stop());
     }
 
     /**
@@ -82,7 +75,7 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testSecondsToTimeString($string, $seconds)
     {
         $this->assertEquals(
-          $string, $this->timer->secondsToTimeString($seconds)
+          $string, PHP_Timer::secondsToTimeString($seconds)
         );
     }
 
@@ -92,7 +85,7 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testTimeSinceStartOfRequest()
     {
         $this->assertStringMatchesFormat(
-          '%f %s', $this->timer->timeSinceStartOfRequest()
+          '%f %s', PHP_Timer::timeSinceStartOfRequest()
         );
     }
 
@@ -103,7 +96,7 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testResourceUsage()
     {
         $this->assertStringMatchesFormat(
-          'Time: %s, Memory: %s', $this->timer->resourceUsage()
+          'Time: %s, Memory: %s', PHP_Timer::resourceUsage()
         );
     }
 

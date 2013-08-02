@@ -69,33 +69,19 @@ class PHP_Timer
     /**
      * @var array
      */
-    private $startTimes = array();
+    private static $startTimes = array();
 
     /**
      * @var float
      */
-    private $requestTime;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            $this->requestTime = $_SERVER['REQUEST_TIME_FLOAT'];
-        }
-
-        else {
-            $this->requestTime = microtime(TRUE);
-        }
-    }
+    public static $requestTime;
 
     /**
      * Starts the timer.
      */
-    public function start()
+    public static function start()
     {
-        array_push($this->startTimes, microtime(TRUE));
+        array_push(self::$startTimes, microtime(TRUE));
     }
 
     /**
@@ -103,9 +89,9 @@ class PHP_Timer
      *
      * @return float
      */
-    public function stop()
+    public static function stop()
     {
-        return microtime(TRUE) - array_pop($this->startTimes);
+        return microtime(TRUE) - array_pop(self::$startTimes);
     }
 
     /**
@@ -114,7 +100,7 @@ class PHP_Timer
      * @param  float $time
      * @return string
      */
-    public function secondsToTimeString($time)
+    public static function secondsToTimeString($time)
     {
         $ms = round($time * 1000);
 
@@ -133,9 +119,9 @@ class PHP_Timer
      *
      * @return string
      */
-    public function timeSinceStartOfRequest()
+    public static function timeSinceStartOfRequest()
     {
-        return $this->secondsToTimeString(microtime(TRUE) - $this->requestTime);
+        return self::secondsToTimeString(microtime(TRUE) - self::$requestTime);
     }
 
     /**
@@ -143,12 +129,20 @@ class PHP_Timer
      *
      * @return string
      */
-    public function resourceUsage()
+    public static function resourceUsage()
     {
         return sprintf(
           'Time: %s, Memory: %4.2fMb',
-          $this->timeSinceStartOfRequest(),
+          self::timeSinceStartOfRequest(),
           memory_get_peak_usage(TRUE) / 1048576
         );
     }
+}
+
+if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+    PHP_Timer::$requestTime = $_SERVER['REQUEST_TIME_FLOAT'];
+}
+
+else {
+    PHP_Timer::$requestTime = microtime(TRUE);
 }
