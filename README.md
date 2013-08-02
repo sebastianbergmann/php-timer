@@ -15,11 +15,11 @@ The following two commands (which you may have to run as `root`) are all that is
 
 ### Composer
 
-To add this package as a local, per-project dependency to your project, simply add a dependency on `phpunit/php-timer` to your project's `composer.json` file. Here is a minimal example of a `composer.json` file that just defines a dependency on PHP_Timer 1.1:
+To add this package as a local, per-project dependency to your project, simply add a dependency on `phpunit/php-timer` to your project's `composer.json` file. Here is a minimal example of a `composer.json` file that just defines a dependency on PHP_Timer:
 
     {
         "require": {
-            "phpunit/php-timer": "1.1.*"
+            "phpunit/php-timer": "*"
         }
     }
 
@@ -28,16 +28,16 @@ To add this package as a local, per-project dependency to your project, simply a
 #### Basic Timing
 
 ```php
-$timer = new PHP_Timer;
+PHP_Timer::start();
 
 $timer->start();
 
 // ...
 
-$time = $timer->stop();
+$time = PHP_Timer::stop();
 var_dump($time);
 
-print $timer->secondsToTimeString($time);
+print PHP_Timer::secondsToTimeString($time);
 ```
 
 The code above yields the output below:
@@ -48,8 +48,7 @@ The code above yields the output below:
 #### Resource Consumption Since PHP Startup
 
 ```php
-$timer = new PHP_Timer;
-print $timer->resourceUsage();
+print PHP_Timer::resourceUsage();
 ```
 
 The code above yields the output below:
