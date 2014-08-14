@@ -14,11 +14,7 @@ before_script:
   - composer install --no-interaction --prefer-source --dev
 
 script:
-  - phpunit --verbose
-
-matrix:
-  allow_failures:
-    - php: hhvm
+  - phpunit --configuration ./build/travis-ci.xml
 
 notifications:
   email: false
