@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the PHP_Timer.
+ * This file is part of the PHP_Timer package.
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
