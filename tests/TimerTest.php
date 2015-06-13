@@ -37,7 +37,8 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testSecondsToTimeString($string, $seconds)
     {
         $this->assertEquals(
-          $string, PHP_Timer::secondsToTimeString($seconds)
+            $string,
+            PHP_Timer::secondsToTimeString($seconds)
         );
     }
 
@@ -47,7 +48,8 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testTimeSinceStartOfRequest()
     {
         $this->assertStringMatchesFormat(
-          '%f %s', PHP_Timer::timeSinceStartOfRequest()
+            '%f %s',
+            PHP_Timer::timeSinceStartOfRequest()
         );
     }
 
@@ -58,7 +60,8 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testResourceUsage()
     {
         $this->assertStringMatchesFormat(
-          'Time: %s, Memory: %s', PHP_Timer::resourceUsage()
+            'Time: %s, Memory: %s',
+            PHP_Timer::resourceUsage()
         );
     }
 

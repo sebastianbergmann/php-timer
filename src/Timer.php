@@ -45,7 +45,7 @@ class PHP_Timer
      */
     public static function start()
     {
-        array_push(self::$startTimes, microtime(TRUE));
+        array_push(self::$startTimes, microtime(true));
     }
 
     /**
@@ -55,7 +55,7 @@ class PHP_Timer
      */
     public static function stop()
     {
-        return microtime(TRUE) - array_pop(self::$startTimes);
+        return microtime(true) - array_pop(self::$startTimes);
     }
 
     /**
@@ -85,7 +85,7 @@ class PHP_Timer
      */
     public static function timeSinceStartOfRequest()
     {
-        return self::secondsToTimeString(microtime(TRUE) - self::$requestTime);
+        return self::secondsToTimeString(microtime(true) - self::$requestTime);
     }
 
     /**
@@ -96,9 +96,9 @@ class PHP_Timer
     public static function resourceUsage()
     {
         return sprintf(
-          'Time: %s, Memory: %4.2fMb',
-          self::timeSinceStartOfRequest(),
-          memory_get_peak_usage(TRUE) / 1048576
+            'Time: %s, Memory: %4.2fMb',
+            self::timeSinceStartOfRequest(),
+            memory_get_peak_usage(true) / 1048576
         );
     }
 }
@@ -108,5 +108,5 @@ if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
 } elseif (isset($_SERVER['REQUEST_TIME'])) {
     PHP_Timer::$requestTime = $_SERVER['REQUEST_TIME'];
 } else {
-    PHP_Timer::$requestTime = microtime(TRUE);
+    PHP_Timer::$requestTime = microtime(true);
 }
