@@ -23,7 +23,7 @@
     },
     "autoload": {
         "classmap": [
-            "PHP/"
+            "src/"
         ]
     }
 }

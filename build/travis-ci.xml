@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupGlobals="false">
-  <testsuites>
-    <testsuite name="PHP_Timer">
-      <directory suffix=".php">../Tests</directory>
-    </testsuite>
-  </testsuites>
-</phpunit>

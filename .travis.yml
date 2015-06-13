@@ -8,12 +8,8 @@ php:
   - 5.6
   - hhvm
 
-before_script:
-  - composer self-update
-  - composer install --no-interaction --prefer-source --dev
-
 script:
-  - phpunit --configuration ./build/travis-ci.xml
+  - phpunit --bootstrap src/Timer.php tests
 
 notifications:
   email: false
