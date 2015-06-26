@@ -59,8 +59,9 @@ class PHP_Timer
      */
     public static function currentTime()
     {
-        if(!is_array(self::$startTimes) || !array_key_exists(0,self::$startTimes))
+        if(!is_array(self::$startTimes) || !array_key_exists(0,self::$startTimes)) {
             throw new Exception("Init start times first");
+        }
         
         return round(microtime(true) - self::$startTimes[0]);
     }
