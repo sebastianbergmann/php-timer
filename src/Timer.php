@@ -53,6 +53,16 @@ class PHP_Timer
     }
 
     /**
+     * get current timer and returns the elapsed time.
+     *
+     * @return float
+     */
+    public static function currentTime()
+    {
+        return round(microtime(true) - self::$startTimes[0]);
+    }
+
+    /**
      * Formats the elapsed time as a string.
      *
      * @param  float  $time
