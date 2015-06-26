@@ -54,8 +54,8 @@ class PHP_Timer
 
     /**
      * get current timer and returns the elapsed time.
-     *
      * @return float
+     * @throws \Exception
      */
     public static function currentTime()
     {
