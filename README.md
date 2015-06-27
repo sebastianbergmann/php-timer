@@ -41,34 +41,31 @@ PHP_Timer::start();
 
 // ...
 PHP_Timer::currentTime();
-
 ```
 
 ### Exemple throw Exception after 5s
+
 ```php
-try{
-	
-	PHP_Timer::start();
+try {
+    PHP_Timer::start();
 
-	while(1 == 1){
-		if(PHP_Timer::currentTime() > 5)
-			throw new Exception("Too long times");
-	}
+    while (1 == 1) {
 
-
-}catch(Exception $e){
-	echo $e->getMessage();
+        if (PHP_Timer::currentTime() > 5) {
+            throw new Exception("Too long times");
+        }
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
-
-
 ```
-### Get string times of script
-```php
 
+### Get string times of script
+
+```php
 PHP_Timer::timeSinceStartOfRequest();
 
 //return string like 10 ms or 5 s
-
 ```
 
 ### Resource Consumption Since PHP Startup
