@@ -53,7 +53,8 @@ class PHP_Timer
     }
 
     /**
-     * get current timer and returns the elapsed time.
+     * Get the elapsed time.
+     * 
      * @return float
      * @throws \Exception
      */
