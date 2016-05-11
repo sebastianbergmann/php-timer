@@ -91,7 +91,7 @@ class PHP_Timer
     public static function resourceUsage()
     {
         return sprintf(
-            'Time: %s, Memory: %4.2fMb',
+            'Time: %s, Memory: %4.2fMB',
             self::timeSinceStartOfRequest(),
             memory_get_peak_usage(true) / 1048576
         );

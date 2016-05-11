@@ -54,7 +54,7 @@ class PHP_TimerTest extends PHPUnit_Framework_TestCase
     public function testResourceUsage()
     {
         $this->assertStringMatchesFormat(
-            'Time: %s, Memory: %s',
+            'Time: %s, Memory: %fMB',
             PHP_Timer::resourceUsage()
         );
     }
