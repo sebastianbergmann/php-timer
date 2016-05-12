@@ -8,8 +8,14 @@ php:
   - 5.6
   - hhvm
 
+before_install:
+  - composer self-update
+
+install:
+  - travis_retry composer install --no-interaction --prefer-source
+
 script:
-  - phpunit --bootstrap src/Timer.php tests
+  - ./vendor/bin/phpunit --bootstrap src/Timer.php tests
 
 notifications:
   email: false
