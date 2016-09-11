@@ -1,14 +1,21 @@
 language: php
+sudo: false
 
-php:
-  - 5.3.3
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - nightly
-  - hhvm
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.3.3
+    - php: 5.3
+    - php: 5.4
+    - php: 5.5
+    - php: 5.6
+    - php: 7.0
+    - php: 7.1
+    - php: nightly
+    - php: hhvm
+      sudo: true
+      dist: trusty
+      group: edge # until the next update
 
 before_install:
   - composer self-update
