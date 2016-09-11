@@ -21,7 +21,7 @@ before_install:
   - composer self-update
 
 install:
-  - travis_retry composer install --no-interaction --prefer-source
+  - travis_retry composer install
 
 script:
   - ./vendor/bin/phpunit --bootstrap src/Timer.php tests
