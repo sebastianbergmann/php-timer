@@ -21,7 +21,7 @@ before_install:
   - composer self-update
 
 install:
-  - composer install
+  - COMPOSER_ROOT_VERSION=dev-master composer install
 
 script:
   - ./vendor/bin/phpunit --bootstrap src/Timer.php tests
