@@ -1,10 +1,12 @@
 language: php
 sudo: false
+dist: trusty
 
 matrix:
   fast_finish: true
   include:
     - php: 5.3
+      dist: precise
     - php: 5.4
     - php: 5.5
     - php: 5.6
@@ -12,9 +14,6 @@ matrix:
     - php: 7.1
     - php: nightly
     - php: hhvm
-      sudo: true
-      dist: trusty
-      group: edge # until the next update
 
 before_install:
   - composer self-update
