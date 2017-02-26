@@ -21,8 +21,6 @@ If you only need this library during development, for instance to run your proje
 ```php
 PHP_Timer::start();
 
-$timer->start();
-
 // ...
 
 $time = PHP_Timer::stop();
