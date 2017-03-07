@@ -51,6 +51,23 @@ class PHP_TimerTest extends TestCase
         );
     }
 
+    /**
+     * @backupGlobals     enabled
+     * @expectedException RuntimeException
+     */
+    public function testTimeSinceStartOfRequest3()
+    {
+        if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+            unset($_SERVER['REQUEST_TIME_FLOAT']);
+        }
+
+        if (isset($_SERVER['REQUEST_TIME'])) {
+            unset($_SERVER['REQUEST_TIME']);
+        }
+
+        PHP_Timer::timeSinceStartOfRequest();
+    }
+
     public function testResourceUsage()
     {
         $this->assertStringMatchesFormat(
