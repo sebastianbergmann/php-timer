@@ -46,6 +46,21 @@ class PHP_Timer
     }
 
     /**
+     * Get the elapsed time.
+     * 
+     * @return float
+     * @throws \Exception
+     */
+    public static function currentTime()
+    {
+        if(!is_array(self::$startTimes) || !array_key_exists(0,self::$startTimes)) {
+            throw new Exception("Init start times first");
+        }
+        
+        return round(microtime(true) - self::$startTimes[0]);
+    }
+
+    /**
      * Formats the elapsed time as a string.
      *
      * @param  float  $time
