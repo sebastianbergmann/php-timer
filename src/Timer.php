@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the PHP_Timer package.
+ * This file is part of phpunit/php-timer.
  *
  * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
@@ -8,56 +8,41 @@
  * file that was distributed with this source code.
  */
 
-/**
- * Utility class for timing.
- */
-class PHP_Timer
+namespace SebastianBergmann\Timer;
+
+final class Timer
 {
     /**
      * @var array
      */
-    private static $times = array(
-      'hour'   => 3600000,
-      'minute' => 60000,
-      'second' => 1000
-    );
+    private static $times = [
+        'hour'   => 3600000,
+        'minute' => 60000,
+        'second' => 1000
+    ];
 
     /**
      * @var array
      */
-    private static $startTimes = array();
+    private static $startTimes = [];
 
-    /**
-     * Starts the timer.
-     */
-    public static function start()
+    public static function start(): void
     {
-        array_push(self::$startTimes, microtime(true));
+        self::$startTimes[] = \microtime(true);
     }
 
-    /**
-     * Stops the timer and returns the elapsed time.
-     *
-     * @return float
-     */
-    public static function stop()
+    public static function stop(): float
     {
-        return microtime(true) - array_pop(self::$startTimes);
+        return \microtime(true) - \array_pop(self::$startTimes);
     }
 
-    /**
-     * Formats the elapsed time as a string.
-     *
-     * @param  float  $time
-     * @return string
-     */
-    public static function secondsToTimeString($time)
+    public static function secondsToTimeString(float $time): string
     {
-        $ms = round($time * 1000);
+        $ms = \round($time * 1000);
 
         foreach (self::$times as $unit => $value) {
             if ($ms >= $value) {
-                $time = floor($ms / $value * 100.0) / 100.0;
+                $time = \floor($ms / $value * 100.0) / 100.0;
 
                 return $time . ' ' . ($time == 1 ? $unit : $unit . 's');
             }
@@ -67,13 +52,9 @@ class PHP_Timer
     }
 
     /**
-     * Formats the elapsed time since the start of the request as a string.
-     *
-     * @return string
-     *
      * @throws RuntimeException
      */
-    public static function timeSinceStartOfRequest()
+    public static function timeSinceStartOfRequest(): string
     {
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
             $startOfRequest = $_SERVER['REQUEST_TIME_FLOAT'];
@@ -83,22 +64,18 @@ class PHP_Timer
             throw new RuntimeException('Cannot determine time at which the request started');
         }
 
-        return self::secondsToTimeString(microtime(true) - $startOfRequest);
+        return self::secondsToTimeString(\microtime(true) - $startOfRequest);
     }
 
     /**
-     * Returns the resources (time, memory) of the request as a string.
-     *
-     * @return string
-     *
      * @throws RuntimeException
      */
-    public static function resourceUsage()
+    public static function resourceUsage(): string
     {
-        return sprintf(
+        return \sprintf(
             'Time: %s, Memory: %4.2fMB',
             self::timeSinceStartOfRequest(),
-            memory_get_peak_usage(true) / 1048576
+            \memory_get_peak_usage(true) / 1048576
         );
     }
 }
