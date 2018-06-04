@@ -25,7 +25,7 @@ class TimerTest extends TestCase
     /**
      * @dataProvider secondsProvider
      */
-    public function testSecondsToTimeString(string $string, string $seconds): void
+    public function testSecondsToTimeString(string $string, float $seconds): void
     {
         $this->assertEquals(
             $string,
