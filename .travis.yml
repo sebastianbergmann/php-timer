@@ -3,7 +3,6 @@ language: php
 php:
   - 7.1
   - 7.2
-  - master
 
 sudo: false
 
