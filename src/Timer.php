@@ -44,7 +44,7 @@ final class Timer
         return \microtime(true) - \array_pop(self::$startTimes);
     }
 
-    public static function bytesToString(int $bytes): string
+    public static function bytesToString(float $bytes): string
     {
         foreach (self::$sizes as $unit => $value) {
             if ($bytes >= $value) {
@@ -54,7 +54,7 @@ final class Timer
             }
         }
 
-        return $bytes . ' byte' . ($bytes !== 1 ? 's' : '');
+        return $bytes . ' byte' . ((int)$bytes !== 1 ? 's' : '');
     }
 
     public static function secondsToTimeString(float $time): string

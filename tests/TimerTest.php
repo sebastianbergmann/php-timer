@@ -112,7 +112,7 @@ final class TimerTest extends TestCase
     /**
      * @dataProvider bytesProvider
      */
-    public function testCanFormatBytesAsString(string $string, int $bytes): void
+    public function testCanFormatBytesAsString(string $string, float $bytes): void
     {
         $this->assertEquals($string, Timer::bytesToString($bytes));
     }
