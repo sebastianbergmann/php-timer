@@ -15,48 +15,34 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \SebastianBergmann\Timer\Timer
  */
-class TimerTest extends TestCase
+final class TimerTest extends TestCase
 {
-    public function testStartStop(): void
+    public function testCanBeStartedAndStopped(): void
     {
-        $this->assertInternalType('float', Timer::stop());
+        $this->assertIsFloat(Timer::stop());
+    }
+
+    public function testCanFormatTimeSinceStartOfRequest(): void
+    {
+        $this->assertStringMatchesFormat('%f %s', Timer::timeSinceStartOfRequest());
     }
 
     /**
-     * @dataProvider secondsProvider
+     * @backupGlobals enabled
      */
-    public function testSecondsToTimeString(string $string, float $seconds): void
-    {
-        $this->assertEquals(
-            $string,
-            Timer::secondsToTimeString($seconds)
-        );
-    }
-
-    public function testTimeSinceStartOfRequest(): void
-    {
-        $this->assertStringMatchesFormat(
-            '%f %s',
-            Timer::timeSinceStartOfRequest()
-        );
-    }
-
-    public function testTimeSinceStartOfRequest2(): void
+    public function testCanFormatSinceStartOfRequestWhenRequestTimeIsNotAvailableAsFloat(): void
     {
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
             unset($_SERVER['REQUEST_TIME_FLOAT']);
         }
 
-        $this->assertStringMatchesFormat(
-            '%f %s',
-            Timer::timeSinceStartOfRequest()
-        );
+        $this->assertStringMatchesFormat('%f %s', Timer::timeSinceStartOfRequest());
     }
 
     /**
-     * @backupGlobals     enabled
+     * @backupGlobals enabled
      */
-    public function testTimeSinceStartOfRequest3(): void
+    public function testCannotFormatTimeSinceStartOfRequestWhenRequestTimeIsNotAvailable(): void
     {
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
             unset($_SERVER['REQUEST_TIME_FLOAT']);
@@ -71,15 +57,20 @@ class TimerTest extends TestCase
         Timer::timeSinceStartOfRequest();
     }
 
-    public function testResourceUsage(): void
+    public function testCanFormatResourceUsage(): void
     {
-        $this->assertStringMatchesFormat(
-            'Time: %s, Memory: %fMB',
-            Timer::resourceUsage()
-        );
+        $this->assertStringMatchesFormat('Time: %s, Memory: %f %s', Timer::resourceUsage());
     }
 
-    public function secondsProvider()
+    /**
+     * @dataProvider secondsProvider
+     */
+    public function testCanFormatSecondsAsString(string $string, float $seconds): void
+    {
+        $this->assertEquals($string, Timer::secondsToTimeString($seconds));
+    }
+
+    public function secondsProvider(): array
     {
         return [
             ['0 ms', 0],
