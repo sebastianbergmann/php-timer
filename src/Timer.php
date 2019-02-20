@@ -48,7 +48,7 @@ final class Timer
     {
         foreach (self::$sizes as $unit => $value) {
             if ($bytes >= $value) {
-                $size = $bytes >= 1024 ? $bytes / $value : $bytes;
+                $size = \sprintf('%.2f', $bytes >= 1024 ? $bytes / $value : $bytes);
 
                 return $size . ' ' . $unit;
             }
