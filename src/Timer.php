@@ -52,7 +52,7 @@ final class Timer
             }
         }
 
-        return $bytes . ' byte' . ((int)$bytes !== 1 ? 's' : '');
+        return $bytes . ' byte' . ((int) $bytes !== 1 ? 's' : '');
     }
 
     public static function secondsToTimeString(float $time): string
