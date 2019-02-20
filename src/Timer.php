@@ -15,6 +15,15 @@ final class Timer
     /**
      * @var int[]
      */
+    private static $sizes = [
+        'GB' => 1073741824,
+        'MB' => 1048576,
+        'KB' => 1024
+    ];
+
+    /**
+     * @var int[]
+     */
     private static $times = [
         'hour'   => 3600000,
         'minute' => 60000,
@@ -34,6 +43,19 @@ final class Timer
     public static function stop(): float
     {
         return \microtime(true) - \array_pop(self::$startTimes);
+    }
+
+    public static function bytesToString(int $bytes): string
+    {
+        foreach (self::$sizes as $unit => $value) {
+            if ($bytes >= $value) {
+                $size = $bytes >= 1024 ? $bytes / $value : $bytes;
+
+                return $size . ' ' . $unit;
+            }
+        }
+
+        return $bytes . ' byte' . ($bytes !== 1 ? 's' : '');
     }
 
     public static function secondsToTimeString(float $time): string
@@ -73,9 +95,9 @@ final class Timer
     public static function resourceUsage(): string
     {
         return \sprintf(
-            'Time: %s, Memory: %4.2fMB',
+            'Time: %s, Memory: %s',
             self::timeSinceStartOfRequest(),
-            \memory_get_peak_usage(true) / 1048576
+            self::bytesToString(\memory_get_peak_usage(true))
         );
     }
 }

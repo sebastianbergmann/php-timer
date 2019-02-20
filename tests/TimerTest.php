@@ -109,4 +109,27 @@ final class TimerTest extends TestCase
             ['2 hours', 7199.9999],
         ];
     }
+
+    /**
+     * @dataProvider bytesProvider
+     */
+    public function testCanFormatBytesAsString(string $string, int $bytes): void
+    {
+        $this->assertEquals($string, Timer::bytesToString($bytes));
+    }
+
+    public function bytesProvider(): array
+    {
+        return [
+            ['0 bytes', 0],
+            ['1 byte', 1],
+            ['1023 bytes', 1023],
+            ['1 KB', 1024],
+            ['1.5 KB', 1.5 * 1024],
+            ['2 MB', 2 * 1048576],
+            ['2.5 MB', 2.5 * 1048576],
+            ['3 GB', 3 * 1073741824],
+            ['3.5 GB', 3.5 * 1073741824]
+        ];
+    }
 }
