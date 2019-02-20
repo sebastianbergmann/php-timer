@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace SebastianBergmann\Timer;
 
 use PHPUnit\Framework\TestCase;
@@ -129,7 +128,7 @@ final class TimerTest extends TestCase
             ['2 MB', 2 * 1048576],
             ['2.5 MB', 2.5 * 1048576],
             ['3 GB', 3 * 1073741824],
-            ['3.5 GB', 3.5 * 1073741824]
+            ['3.5 GB', 3.5 * 1073741824],
         ];
     }
 }

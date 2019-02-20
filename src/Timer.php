@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace SebastianBergmann\Timer;
 
 final class Timer
@@ -18,7 +17,7 @@ final class Timer
     private static $sizes = [
         'GB' => 1073741824,
         'MB' => 1048576,
-        'KB' => 1024
+        'KB' => 1024,
     ];
 
     /**
@@ -27,7 +26,7 @@ final class Timer
     private static $times = [
         'hour'   => 3600000,
         'minute' => 60000,
-        'second' => 1000
+        'second' => 1000,
     ];
 
     /**
