@@ -6,8 +6,6 @@ php:
   - 7.3
   - 7.4snapshot
 
-sudo: false
-
 before_install:
   - composer self-update
   - composer clear-cache
