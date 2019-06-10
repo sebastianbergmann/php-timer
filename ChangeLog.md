@@ -6,7 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-* Fixed [#21](https://github.com/sebastianbergmann/php-timer/pull/3352): Formatting of memory consumption does not work on 32bit systems
+* Fixed [#21](https://github.com/sebastianbergmann/php-timer/pull/21): Formatting of memory consumption does not work on 32bit systems
 
 ## [2.1.1] - 2019-02-20
 
