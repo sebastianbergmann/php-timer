@@ -44,6 +44,11 @@ final class Timer
         return \microtime(true) - \array_pop(self::$startTimes);
     }
 
+    public static function timeRunning(): float
+    {
+        return \microtime(true) - \end(self::$startTimes);
+    }
+
     public static function bytesToString(float $bytes): string
     {
         foreach (self::$sizes as $unit => $value) {
