@@ -18,7 +18,6 @@
         "issues": "https://github.com/sebastianbergmann/php-timer/issues"
     },
     "prefer-stable": true,
-    "minimum-stability": "dev",
     "require": {
         "php": "^7.3"
     },
