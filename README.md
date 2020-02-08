@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/sebastianbergmann/php-timer.svg?branch=master)](https://travis-ci.org/sebastianbergmann/php-timer)
-
 # phpunit/php-timer
+
+[![CI Status](https://github.com/sebastianbergmann/php-timer/workflows/CI/badge.svg)](https://github.com/sebastianbergmann/php-timer/actions)
+[![Type Coverage](https://shepherd.dev/github/sebastianbergmann/php-timer/coverage.svg)](https://shepherd.dev/github/sebastianbergmann/php-timer)
 
 Utility class for timing things, factored out of PHPUnit into a stand-alone component.
 
@@ -8,11 +9,15 @@ Utility class for timing things, factored out of PHPUnit into a stand-alone comp
 
 You can add this library as a local, per-project dependency to your project using [Composer](https://getcomposer.org/):
 
-    composer require phpunit/php-timer
+```
+composer require phpunit/php-timer
+```
 
 If you only need this library during development, for instance to run your project's test suite, then you should add it as a development-time dependency:
 
-    composer require --dev phpunit/php-timer
+```
+composer require --dev phpunit/php-timer
+```
 
 ## Usage
 
@@ -33,8 +38,10 @@ print Timer::secondsToTimeString($time);
 
 The code above yields the output below:
 
-    double(1.0967254638672E-5)
-    0 ms
+```
+double(1.0967254638672E-5)
+0 ms
+```
 
 ### Resource Consumption Since PHP Startup
 
@@ -46,4 +53,6 @@ print Timer::resourceUsage();
 
 The code above yields the output below:
 
-    Time: 0 ms, Memory: 0.50MB
+```
+Time: 0 ms, Memory: 0.50MB
+```
