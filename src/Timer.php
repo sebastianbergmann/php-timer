@@ -57,6 +57,7 @@ final class Timer
             if ($timeInMilliseconds >= $value) {
                 $timeInSeconds = \floor($timeInMilliseconds / $value * 100.0) / 100.0;
 
+                /** @noinspection TypeUnsafeComparisonInspection */
                 return $timeInSeconds . ' ' . ($timeInSeconds == 1 ? $unit : $unit . 's');
             }
         }
