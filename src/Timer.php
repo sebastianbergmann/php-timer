@@ -11,19 +11,13 @@ namespace SebastianBergmann\Timer;
 
 final class Timer
 {
-    /**
-     * @var int[]
-     */
-    private static $sizes = [
+    private const SIZES = [
         'GB' => 1073741824,
         'MB' => 1048576,
         'KB' => 1024,
     ];
 
-    /**
-     * @var int[]
-     */
-    private static $times = [
+    private const TIMES = [
         'hour'   => 3600000,
         'minute' => 60000,
         'second' => 1000,
@@ -46,7 +40,7 @@ final class Timer
 
     public static function bytesToString(float $bytes): string
     {
-        foreach (self::$sizes as $unit => $value) {
+        foreach (self::SIZES as $unit => $value) {
             if ($bytes >= $value) {
                 return \sprintf('%.2f %s', $bytes >= 1024 ? $bytes / $value : $bytes, $unit);
             }
@@ -59,7 +53,7 @@ final class Timer
     {
         $ms = \round($time * 1000);
 
-        foreach (self::$times as $unit => $value) {
+        foreach (self::TIMES as $unit => $value) {
             if ($ms >= $value) {
                 $time = \floor($ms / $value * 100.0) / 100.0;
 
