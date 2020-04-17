@@ -23,7 +23,7 @@ final class TimerTest extends TestCase
 
     public function testCanFormatTimeSinceStartOfRequest(): void
     {
-        $this->assertStringMatchesFormat('%f %s', Timer::timeSinceStartOfRequest());
+        $this->assertStringMatchesFormat('%d:%d%s', Timer::timeSinceStartOfRequest());
     }
 
     /**
@@ -35,7 +35,7 @@ final class TimerTest extends TestCase
             unset($_SERVER['REQUEST_TIME_FLOAT']);
         }
 
-        $this->assertStringMatchesFormat('%f %s', Timer::timeSinceStartOfRequest());
+        $this->assertStringMatchesFormat('%d:%d%s', Timer::timeSinceStartOfRequest());
     }
 
     /**

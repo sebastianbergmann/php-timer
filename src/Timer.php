@@ -120,7 +120,7 @@ final class Timer
             throw new RuntimeException('Cannot determine time at which the request started');
         }
 
-        return self::secondsToTimeString(\microtime(true) - $startOfRequest);
+        return self::secondsToShortTimeString(\microtime(true) - $startOfRequest);
     }
 
     /**

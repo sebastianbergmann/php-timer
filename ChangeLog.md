@@ -11,6 +11,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 ### Changed
 
 * `Timer::start()` and `Timer::stop()` now use `hrtime()` (high resolution monotonic timer) instead of `microtime()`
+* `Timer::timeSinceStartOfRequest()` now uses `Timer::secondsToShortTimeString()` for time formatting
 * Improved formatting of `Timer::secondsToTimeString()` result
 
 ## [3.0.0] - 2020-02-07
