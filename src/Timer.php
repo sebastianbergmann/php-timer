@@ -45,50 +45,39 @@ final class Timer
 
     public static function secondsToTimeString(float $timeInSeconds): string
     {
-        $timeInMilliseconds    = \round($timeInSeconds * 1000);
-        $hours                 = \floor($timeInMilliseconds / 60 / 60 / 1000);
-        $hoursAsInteger        = (int) $hours;
-        $hoursInMilliseconds   = $hours * 60 * 60 * 1000;
-        $minutes               = \floor($timeInMilliseconds / 60 / 1000) % 60;
-        $minutesAsInteger      = $minutes;
-        $minutesInMilliseconds = $minutes * 60 * 1000;
-        $seconds               = \floor(($timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000);
-        $secondsAsInteger      = (int) $seconds;
-        $secondsInMilliseconds = $seconds * 1000;
-        $milliseconds          = $timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds - $secondsInMilliseconds;
-        $millisecondsAsInteger = (int) $milliseconds;
+        $fragments = self::timeInSecondsToFragments($timeInSeconds);
 
         $result = [];
 
-        if ($hoursAsInteger > 0) {
-            if ($hoursAsInteger === 1) {
+        if ($fragments['hours'] > 0) {
+            if ($fragments['hours'] === 1) {
                 $result[] = '1 hour';
             } else {
-                $result[] = $hoursAsInteger . ' hours';
+                $result[] = $fragments['hours'] . ' hours';
             }
         }
 
-        if ($minutesAsInteger > 0) {
-            if ($minutesAsInteger === 1) {
+        if ($fragments['minutes'] > 0) {
+            if ($fragments['minutes'] === 1) {
                 $result[] = '1 minute';
             } else {
-                $result[] = $minutesAsInteger . ' minutes';
+                $result[] = $fragments['minutes'] . ' minutes';
             }
         }
 
-        if ($secondsAsInteger > 0) {
-            if ($secondsAsInteger === 1) {
+        if ($fragments['seconds'] > 0) {
+            if ($fragments['seconds'] === 1) {
                 $result[] = '1 second';
             } else {
-                $result[] = $secondsAsInteger . ' seconds';
+                $result[] = $fragments['seconds'] . ' seconds';
             }
         }
 
-        if ($millisecondsAsInteger > 0) {
-            if ($millisecondsAsInteger === 1) {
+        if ($fragments['milliseconds'] > 0) {
+            if ($fragments['milliseconds'] === 1) {
                 $result[] = '1 millisecond';
             } else {
-                $result[] = $millisecondsAsInteger . ' milliseconds';
+                $result[] = $fragments['milliseconds'] . ' milliseconds';
             }
         }
 
@@ -125,5 +114,31 @@ final class Timer
             self::timeSinceStartOfRequest(),
             self::bytesToString(\memory_get_peak_usage(true))
         );
+    }
+
+    /**
+     * @psalm-return array<string,int>
+     */
+    private static function timeInSecondsToFragments(float $timeInSeconds): array
+    {
+        $timeInMilliseconds    = \round($timeInSeconds * 1000);
+        $hours                 = \floor($timeInMilliseconds / 60 / 60 / 1000);
+        $hoursAsInteger        = (int) $hours;
+        $hoursInMilliseconds   = $hours * 60 * 60 * 1000;
+        $minutes               = \floor($timeInMilliseconds / 60 / 1000) % 60;
+        $minutesAsInteger      = $minutes;
+        $minutesInMilliseconds = $minutes * 60 * 1000;
+        $seconds               = \floor(($timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000);
+        $secondsAsInteger      = (int) $seconds;
+        $secondsInMilliseconds = $seconds * 1000;
+        $milliseconds          = $timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds - $secondsInMilliseconds;
+        $millisecondsAsInteger = (int) $milliseconds;
+
+        return [
+            'hours'        => $hoursAsInteger,
+            'minutes'      => $minutesAsInteger,
+            'seconds'      => $secondsAsInteger,
+            'milliseconds' => $millisecondsAsInteger
+        ];
     }
 }
