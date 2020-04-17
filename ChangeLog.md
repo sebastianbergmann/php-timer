@@ -36,7 +36,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 
-[3.0.0]: https://github.com/sebastianbergmann/diff/compare/2.1.2...master
+[3.0.0]: https://github.com/sebastianbergmann/diff/compare/2.1.2...3.0.0
 [2.1.2]: https://github.com/sebastianbergmann/diff/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/sebastianbergmann/diff/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/sebastianbergmann/diff/compare/2.0.0...2.1.0
