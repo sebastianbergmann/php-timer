@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [3.1.2] - 2020-04-17
+
+### Changed
+
+* Improved the fix for [#30](https://github.com/sebastianbergmann/php-timer/issues/30) and restored usage of `hrtime()`
+
 ## [3.1.1] - 2020-04-17
 
 ### Fixed
@@ -54,6 +60,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 
+[3.1.2]: https://github.com/sebastianbergmann/diff/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/sebastianbergmann/diff/compare/3.1.0...3.1.1
 [3.1.0]: https://github.com/sebastianbergmann/diff/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/sebastianbergmann/diff/compare/2.1.2...3.0.0
