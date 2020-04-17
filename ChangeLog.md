@@ -6,7 +6,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-* [#30](https://github.com/sebastianbergmann/php-timer/pull/30): Resolution of time returned by `Timer::stop()` is different than before (this reverts using `hrtime()` instead of `microtime()`)
+* [#30](https://github.com/sebastianbergmann/php-timer/issues/30): Resolution of time returned by `Timer::stop()` is different than before (this reverts using `hrtime()` instead of `microtime()`)
 
 ## [3.1.0] - 2020-04-17
 
