@@ -17,12 +17,6 @@ final class Timer
         'KB' => 1024,
     ];
 
-    private const TIMES = [
-        'hour'   => 3600000,
-        'minute' => 60000,
-        'second' => 1000,
-    ];
-
     /**
      * @var float[]
      */
@@ -51,18 +45,58 @@ final class Timer
 
     public static function secondsToTimeString(float $timeInSeconds): string
     {
-        $timeInMilliseconds = \round($timeInSeconds * 1000);
+        $timeInMilliseconds    = \round($timeInSeconds * 1000);
+        $hours                 = \floor($timeInMilliseconds / 60 / 60 / 1000);
+        $hoursAsInteger        = (int) $hours;
+        $hoursInMilliseconds   = $hours * 60 * 60 * 1000;
+        $minutes               = \floor($timeInMilliseconds / 60 / 1000) % 60;
+        $minutesAsInteger      = $minutes;
+        $minutesInMilliseconds = $minutes * 60 * 1000;
+        $seconds               = \floor(($timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000);
+        $secondsAsInteger      = (int) $seconds;
+        $secondsInMilliseconds = $seconds * 1000;
+        $milliseconds          = $timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds - $secondsInMilliseconds;
+        $millisecondsAsInteger = (int) $milliseconds;
 
-        foreach (self::TIMES as $unit => $value) {
-            if ($timeInMilliseconds >= $value) {
-                $timeInSeconds = \floor($timeInMilliseconds / $value * 100.0) / 100.0;
+        $result = [];
 
-                /** @noinspection TypeUnsafeComparisonInspection */
-                return $timeInSeconds . ' ' . ($timeInSeconds == 1 ? $unit : $unit . 's');
+        if ($hoursAsInteger > 0) {
+            if ($hoursAsInteger === 1) {
+                $result[] = '1 hour';
+            } else {
+                $result[] = $hoursAsInteger . ' hours';
             }
         }
 
-        return $timeInMilliseconds . ' ms';
+        if ($minutesAsInteger > 0) {
+            if ($minutesAsInteger === 1) {
+                $result[] = '1 minute';
+            } else {
+                $result[] = $minutesAsInteger . ' minutes';
+            }
+        }
+
+        if ($secondsAsInteger > 0) {
+            if ($secondsAsInteger === 1) {
+                $result[] = '1 second';
+            } else {
+                $result[] = $secondsAsInteger . ' seconds';
+            }
+        }
+
+        if ($millisecondsAsInteger > 0) {
+            if ($millisecondsAsInteger === 1) {
+                $result[] = '1 millisecond';
+            } else {
+                $result[] = $millisecondsAsInteger . ' milliseconds';
+            }
+        }
+
+        if (!empty($result)) {
+            return \implode(', ', $result);
+        }
+
+        return '0 milliseconds';
     }
 
     /**
