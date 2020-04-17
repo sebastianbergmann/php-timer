@@ -4,6 +4,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ## [3.1.0] - 2020-MM-DD
 
+### Added
+
+* `Timer::secondsToShortTimeString()` as alternative to `Timer::secondsToTimeString()`
+
 ### Changed
 
 * `Timer::start()` and `Timer::stop()` now use `hrtime()` (high resolution monotonic timer) instead of `microtime()`

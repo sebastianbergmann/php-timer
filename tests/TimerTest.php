@@ -62,14 +62,14 @@ final class TimerTest extends TestCase
     }
 
     /**
-     * @dataProvider secondsProvider
+     * @dataProvider secondsToTimeStringProvider
      */
     public function testCanFormatSecondsAsString(string $string, float $seconds): void
     {
         $this->assertEquals($string, Timer::secondsToTimeString($seconds));
     }
 
-    public function secondsProvider(): array
+    public function secondsToTimeStringProvider(): array
     {
         return [
             ['0 milliseconds', 0],
@@ -106,6 +106,54 @@ final class TimerTest extends TestCase
             ['1 hour, 59 seconds, 1 millisecond', 3659.001],
             ['1 hour, 59 seconds, 10 milliseconds', 3659.01],
             ['2 hours', 7199.9999],
+        ];
+    }
+
+    /**
+     * @dataProvider secondsToTimeShortStringProvider
+     */
+    public function testCanFormatSecondsAsShortString(string $string, float $seconds): void
+    {
+        $this->assertEquals($string, Timer::secondsToShortTimeString($seconds));
+    }
+
+    public function secondsToTimeShortStringProvider(): array
+    {
+        return [
+            ['00:00', 0],
+            ['00:00.001', .001],
+            ['00:00.010', .01],
+            ['00:00.100', .1],
+            ['00:00.999', .999],
+            ['00:01', .9999],
+            ['00:01', 1],
+            ['00:02', 2],
+            ['00:59.900', 59.9],
+            ['00:59.990', 59.99],
+            ['00:59.999', 59.999],
+            ['01:00', 59.9999],
+            ['00:59.001', 59.001],
+            ['00:59.010', 59.01],
+            ['01:00', 60],
+            ['01:01', 61],
+            ['02:00', 120],
+            ['02:01', 121],
+            ['59:59.900', 3599.9],
+            ['59:59.990', 3599.99],
+            ['59:59.999', 3599.999],
+            ['01:00:00', 3599.9999],
+            ['59:59.001', 3599.001],
+            ['59:59.010', 3599.01],
+            ['01:00:00', 3600],
+            ['01:00:01', 3601],
+            ['01:00:01.900', 3601.9],
+            ['01:00:01.990', 3601.99],
+            ['01:00:01.999', 3601.999],
+            ['01:00:02', 3601.9999],
+            ['01:01:00', 3659.9999],
+            ['01:00:59.001', 3659.001],
+            ['01:00:59.010', 3659.01],
+            ['02:00:00', 7199.9999],
         ];
     }
 

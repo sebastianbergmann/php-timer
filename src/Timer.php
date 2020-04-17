@@ -43,6 +43,25 @@ final class Timer
         return $bytes . ' byte' . ((int) $bytes !== 1 ? 's' : '');
     }
 
+    public static function secondsToShortTimeString(float $timeInSeconds): string
+    {
+        $integerFragments = self::timeInSecondsToFragments($timeInSeconds);
+        $result           = '';
+
+        if ($integerFragments['hours'] > 0) {
+            $result = \sprintf('%02d', $integerFragments['hours']) . ':';
+        }
+
+        $result .= \sprintf('%02d', $integerFragments['minutes']) . ':';
+        $result .= \sprintf('%02d', $integerFragments['seconds']);
+
+        if ($integerFragments['milliseconds'] > 0) {
+            $result .= '.' . \sprintf('%03d', $integerFragments['milliseconds']);
+        }
+
+        return $result;
+    }
+
     public static function secondsToTimeString(float $timeInSeconds): string
     {
         $fragments = self::timeInSecondsToFragments($timeInSeconds);
