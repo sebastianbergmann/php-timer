@@ -157,7 +157,7 @@ final class Timer
             'hours'        => $hoursAsInteger,
             'minutes'      => $minutesAsInteger,
             'seconds'      => $secondsAsInteger,
-            'milliseconds' => $millisecondsAsInteger
+            'milliseconds' => $millisecondsAsInteger,
         ];
     }
 }
