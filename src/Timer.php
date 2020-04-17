@@ -24,12 +24,12 @@ final class Timer
 
     public static function start(): void
     {
-        self::$startTimes[] = \microtime(true);
+        self::$startTimes[] = \hrtime(true) / 1000000;
     }
 
     public static function stop(): float
     {
-        return \microtime(true) - \array_pop(self::$startTimes);
+        return (\hrtime(true) / 1000000) - \array_pop(self::$startTimes);
     }
 
     public static function bytesToString(float $bytes): string
