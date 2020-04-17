@@ -28,7 +28,9 @@ use SebastianBergmann\Timer\Timer;
 
 Timer::start();
 
-// ...
+foreach (\range(0, 100000) as $i) {
+    // ...
+}
 
 $time = Timer::stop();
 var_dump($time);
@@ -39,8 +41,8 @@ print Timer::secondsToTimeString($time);
 The code above yields the output below:
 
 ```
-float(0.0013260003179312)
-1 millisecond
+float(0.0023904049994599)
+2 milliseconds
 ```
 
 ### Resource Consumption Since PHP Startup
@@ -48,11 +50,15 @@ float(0.0013260003179312)
 ```php
 use SebastianBergmann\Timer\Timer;
 
+foreach (\range(0, 100000) as $i) {
+    // ...
+}
+
 print Timer::resourceUsage();
 ```
 
 The code above yields the output below:
 
 ```
-Time: 00:00.002, Memory: 2.00 MB
+Time: 00:00.002, Memory: 6.00 MB
 ```
