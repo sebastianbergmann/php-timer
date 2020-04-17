@@ -39,8 +39,8 @@ print Timer::secondsToTimeString($time);
 The code above yields the output below:
 
 ```
-double(1.0967254638672E-5)
-0 ms
+float(0.0013260003179312)
+1 millisecond
 ```
 
 ### Resource Consumption Since PHP Startup
@@ -54,5 +54,5 @@ print Timer::resourceUsage();
 The code above yields the output below:
 
 ```
-Time: 0 ms, Memory: 0.50MB
+Time: 00:00.002, Memory: 2.00 MB
 ```
