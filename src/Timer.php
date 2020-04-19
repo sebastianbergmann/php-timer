@@ -11,6 +11,9 @@ namespace SebastianBergmann\Timer;
 
 final class Timer
 {
+    /**
+     * @psalm-var array<string,int>
+     */
     private const SIZES = [
         'GB' => 1073741824,
         'MB' => 1048576,
@@ -18,7 +21,7 @@ final class Timer
     ];
 
     /**
-     * @var float[]
+     * @psalm-var list<float>
      */
     private static $startTimes = [];
 
@@ -113,14 +116,14 @@ final class Timer
     public static function timeSinceStartOfRequest(): string
     {
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            $startOfRequest = $_SERVER['REQUEST_TIME_FLOAT'];
-        } elseif (isset($_SERVER['REQUEST_TIME'])) {
-            $startOfRequest = $_SERVER['REQUEST_TIME'];
-        } else {
-            throw new RuntimeException('Cannot determine time at which the request started');
+            return self::secondsToShortTimeString(\microtime(true) - (float) $_SERVER['REQUEST_TIME_FLOAT']);
         }
 
-        return self::secondsToShortTimeString(\microtime(true) - $startOfRequest);
+        if (isset($_SERVER['REQUEST_TIME'])) {
+            return self::secondsToShortTimeString(\microtime(true) - (float) $_SERVER['REQUEST_TIME']);
+        }
+
+        throw new RuntimeException('Cannot determine time at which the request started');
     }
 
     /**
