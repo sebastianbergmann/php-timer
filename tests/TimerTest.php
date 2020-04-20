@@ -18,6 +18,8 @@ final class TimerTest extends TestCase
 {
     public function testCanBeStartedAndStopped(): void
     {
+        Timer::start();
+
         $this->assertIsFloat(Timer::stop());
     }
 
