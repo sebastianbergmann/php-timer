@@ -26,36 +26,6 @@ final class TimerTest extends TestCase
         $this->assertStringMatchesFormat('%d:%d%s', Timer::timeSinceStartOfRequest());
     }
 
-    /**
-     * @backupGlobals enabled
-     */
-    public function testCanFormatSinceStartOfRequestWhenRequestTimeIsNotAvailableAsFloat(): void
-    {
-        if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            unset($_SERVER['REQUEST_TIME_FLOAT']);
-        }
-
-        $this->assertStringMatchesFormat('%d:%d%s', Timer::timeSinceStartOfRequest());
-    }
-
-    /**
-     * @backupGlobals enabled
-     */
-    public function testCannotFormatTimeSinceStartOfRequestWhenRequestTimeIsNotAvailable(): void
-    {
-        if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            unset($_SERVER['REQUEST_TIME_FLOAT']);
-        }
-
-        if (isset($_SERVER['REQUEST_TIME'])) {
-            unset($_SERVER['REQUEST_TIME']);
-        }
-
-        $this->expectException(RuntimeException::class);
-
-        Timer::timeSinceStartOfRequest();
-    }
-
     public function testCanFormatResourceUsage(): void
     {
         $this->assertStringMatchesFormat('Time: %s, Memory: %f %s', Timer::resourceUsage());
@@ -178,5 +148,31 @@ final class TimerTest extends TestCase
             ['3.00 GB', 3 * 1073741824],
             ['3.50 GB', 3.5 * 1073741824],
         ];
+    }
+
+    /**
+     * @backupGlobals enabled
+     */
+    public function testCannotAccessTimeSinceStartOfRequestWhenServerRequestTimeFloatIsNotSet(): void
+    {
+        unset($_SERVER['REQUEST_TIME_FLOAT']);
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not available');
+
+        Timer::timeSinceStartOfRequest();
+    }
+
+    /**
+     * @backupGlobals enabled
+     */
+    public function testCannotAccessTimeSinceStartOfRequestWhenServerRequestTimeFloatIsNotFloat(): void
+    {
+        $_SERVER['REQUEST_TIME_FLOAT'] = 'string';
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not of type float');
+
+        Timer::timeSinceStartOfRequest();
     }
 }

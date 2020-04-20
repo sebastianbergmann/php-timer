@@ -7,6 +7,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 ### Changed
 
 * `Timer::timeSinceStartOfRequest()` no longer tries `$_SERVER['REQUEST_TIME']` when `$_SERVER['REQUEST_TIME_FLOAT']` is not available (`$_SERVER['REQUEST_TIME_FLOAT']` was added in PHP 5.4 and this library requires PHP 7.3)
+* Improved exception messages when `$_SERVER['REQUEST_TIME_FLOAT']` is not set or is not of type `float`
 
 ### Changed
 

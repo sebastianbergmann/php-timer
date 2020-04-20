@@ -115,11 +115,19 @@ final class Timer
      */
     public static function timeSinceStartOfRequest(): string
     {
-        if (isset($_SERVER['REQUEST_TIME_FLOAT']) && \is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
-            return self::secondsToShortTimeString(\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']);
+        if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+            throw new RuntimeException(
+                'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not available'
+            );
         }
 
-        throw new RuntimeException('Cannot determine time at which the request started');
+        if (!\is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
+            throw new RuntimeException(
+                'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not of type float'
+            );
+        }
+
+        return self::secondsToShortTimeString(\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']);
     }
 
     /**
