@@ -35,6 +35,7 @@ final class TimerTest extends TestCase
 
     /**
      * @dataProvider secondsToTimeStringProvider
+     * @testdox Can format $seconds as '$string'
      */
     public function testCanFormatSecondsAsString(string $string, float $seconds): void
     {
@@ -83,6 +84,7 @@ final class TimerTest extends TestCase
 
     /**
      * @dataProvider secondsToTimeShortStringProvider
+     * @testdox Can format $seconds as '$string'
      */
     public function testCanFormatSecondsAsShortString(string $string, float $seconds): void
     {
@@ -131,6 +133,7 @@ final class TimerTest extends TestCase
 
     /**
      * @dataProvider bytesProvider
+     * @testdox Can format $bytes as '$string'
      */
     public function testCanFormatBytesAsString(string $string, float $bytes): void
     {
@@ -154,6 +157,7 @@ final class TimerTest extends TestCase
 
     /**
      * @backupGlobals enabled
+     * @testdox Cannot access time since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not set
      */
     public function testCannotAccessTimeSinceStartOfRequestWhenServerRequestTimeFloatIsNotSet(): void
     {
@@ -167,6 +171,7 @@ final class TimerTest extends TestCase
 
     /**
      * @backupGlobals enabled
+     * @testdox Cannot access time since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not of type float
      */
     public function testCannotAccessTimeSinceStartOfRequestWhenServerRequestTimeFloatIsNotFloat(): void
     {
