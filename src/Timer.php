@@ -145,22 +145,18 @@ final class Timer
     {
         $timeInMilliseconds    = \round($timeInSeconds * 1000);
         $hours                 = \floor($timeInMilliseconds / 60 / 60 / 1000);
-        $hoursAsInteger        = (int) $hours;
         $hoursInMilliseconds   = $hours * 60 * 60 * 1000;
         $minutes               = \floor($timeInMilliseconds / 60 / 1000) % 60;
-        $minutesAsInteger      = $minutes;
         $minutesInMilliseconds = $minutes * 60 * 1000;
         $seconds               = \floor(($timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds) / 1000);
-        $secondsAsInteger      = (int) $seconds;
         $secondsInMilliseconds = $seconds * 1000;
         $milliseconds          = $timeInMilliseconds - $hoursInMilliseconds - $minutesInMilliseconds - $secondsInMilliseconds;
-        $millisecondsAsInteger = (int) $milliseconds;
 
         return [
-            'hours'        => $hoursAsInteger,
-            'minutes'      => $minutesAsInteger,
-            'seconds'      => $secondsAsInteger,
-            'milliseconds' => $millisecondsAsInteger,
+            'hours'        => (int) $hours,
+            'minutes'      => $minutes,
+            'seconds'      => (int) $seconds,
+            'milliseconds' => (int) $milliseconds,
         ];
     }
 }
