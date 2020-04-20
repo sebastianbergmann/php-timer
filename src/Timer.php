@@ -119,10 +119,6 @@ final class Timer
             return self::secondsToShortTimeString(\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']);
         }
 
-        if (isset($_SERVER['REQUEST_TIME']) && \is_int($_SERVER['REQUEST_TIME'])) {
-            return self::secondsToShortTimeString(\microtime(true) - $_SERVER['REQUEST_TIME']);
-        }
-
         throw new RuntimeException('Cannot determine time at which the request started');
     }
 
