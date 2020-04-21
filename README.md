@@ -24,37 +24,77 @@ composer require --dev phpunit/php-timer
 ### Basic Timing
 
 ```php
+require __DIR__ . '/vendor/autoload.php';
+
 use SebastianBergmann\Timer\Timer;
 
-Timer::start();
+$timer = new Timer;
+
+$timer->start();
 
 foreach (\range(0, 100000) as $i) {
     // ...
 }
 
-$time = Timer::stop();
-var_dump($time);
+$duration = $timer->stop();
 
-print Timer::secondsToTimeString($time);
+var_dump(get_class($duration));
+var_dump($duration->asString());
+var_dump($duration->asSeconds());
+var_dump($duration->asMilliseconds());
+var_dump($duration->asMicroseconds());
+var_dump($duration->asNanoseconds());
 ```
 
 The code above yields the output below:
 
 ```
-float(0.0023904049994599)
-2 milliseconds
+string(32) "SebastianBergmann\Timer\Duration"
+string(9) "00:00.002"
+float(0.002851062)
+float(2.851062)
+float(2851.062)
+int(2851062)
 ```
 
-### Resource Consumption Since PHP Startup
+### Resource Consumption
+
+#### Explicit duration
 
 ```php
+require __DIR__ . '/vendor/autoload.php';
+
+use SebastianBergmann\Timer\ResourceUsageFormatter;
 use SebastianBergmann\Timer\Timer;
+
+$timer = new Timer;
+$timer->start();
 
 foreach (\range(0, 100000) as $i) {
     // ...
 }
 
-print Timer::resourceUsage();
+print (new ResourceUsageFormatter)->resourceUsage($timer->stop());
+```
+
+The code above yields the output below:
+
+```
+Time: 00:00.002, Memory: 6.00 MB
+```
+
+#### Duration since PHP Startup (using unreliable `$_SERVER['REQUEST_TIME_FLOAT']`)
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+
+use SebastianBergmann\Timer\ResourceUsageFormatter;
+
+foreach (\range(0, 100000) as $i) {
+    // ...
+}
+
+print (new ResourceUsageFormatter)->resourceUsage();
 ```
 
 The code above yields the output below:

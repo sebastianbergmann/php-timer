@@ -9,6 +9,6 @@
  */
 namespace SebastianBergmann\Timer;
 
-final class RuntimeException extends \RuntimeException implements Exception
+final class NoActiveTimerException extends \LogicException implements Exception
 {
 }
