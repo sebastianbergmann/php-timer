@@ -39,7 +39,7 @@ final class ResourceUsageFormatterTest extends TestCase
         );
     }
 
-    public function testCanFormatWithImpliciDuration(): void
+    public function testCanFormatWithImplicitDuration(): void
     {
         $this->assertStringMatchesFormat(
             'Time: %s, Memory: %s',
