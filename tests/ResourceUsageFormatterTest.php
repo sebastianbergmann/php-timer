@@ -12,7 +12,7 @@ namespace SebastianBergmann\Timer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \SebastianBergmann\Timer\ResourceUsageFormatterTest
+ * @covers \SebastianBergmann\Timer\ResourceUsageFormatter
  *
  * @uses \SebastianBergmann\Timer\Duration
  */
