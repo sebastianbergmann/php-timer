@@ -46,4 +46,28 @@ final class ResourceUsageFormatterTest extends TestCase
             $this->formatter->resourceUsage()
         );
     }
+
+    /**
+     * @backupGlobals enabled
+     */
+    public function testCannotFormatWithImplicitDurationWhenRequestTimeFloatIsNotNotAvailable(): void
+    {
+        unset($_SERVER['REQUEST_TIME_FLOAT']);
+
+        $this->expectException(TimeSinceStartOfRequestNotAvailableException::class);
+
+        $this->formatter->resourceUsage();
+    }
+
+    /**
+     * @backupGlobals enabled
+     */
+    public function testCannotFormatWithImplicitDurationWhenRequestTimeFloatIsNotNotValid(): void
+    {
+        $_SERVER['REQUEST_TIME_FLOAT'] = 'string';
+
+        $this->expectException(TimeSinceStartOfRequestNotAvailableException::class);
+
+        $this->formatter->resourceUsage();
+    }
 }
