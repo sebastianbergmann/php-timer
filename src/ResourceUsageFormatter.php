@@ -56,6 +56,8 @@ final class ResourceUsageFormatter
             }
         }
 
+        // @codeCoverageIgnoreStart
         return $bytes . ' byte' . ($bytes !== 1 ? 's' : '');
+        // @codeCoverageIgnoreEnd
     }
 }
