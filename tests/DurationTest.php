@@ -13,6 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \SebastianBergmann\Timer\Duration
+ *
+ * @uses \SebastianBergmann\Timer\Timer
  */
 final class DurationTest extends TestCase
 {

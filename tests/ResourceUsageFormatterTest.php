@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
  * @covers \SebastianBergmann\Timer\ResourceUsageFormatter
  *
  * @uses \SebastianBergmann\Timer\Duration
+ * @uses \SebastianBergmann\Timer\Timer
  */
 final class ResourceUsageFormatterTest extends TestCase
 {
