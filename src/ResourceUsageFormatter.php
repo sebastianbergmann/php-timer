@@ -20,31 +20,36 @@ final class ResourceUsageFormatter
         'KB' => 1024,
     ];
 
-    /**
-     * @throws TimeSinceStartOfRequestNotAvailableException
-     */
-    public function resourceUsage(?Duration $duration = null): string
+    public function resourceUsage(Duration $duration): string
     {
-        if ($duration === null) {
-            if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-                throw new TimeSinceStartOfRequestNotAvailableException(
-                    'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not available'
-                );
-            }
-
-            if (!\is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
-                throw new TimeSinceStartOfRequestNotAvailableException(
-                    'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not of type float'
-                );
-            }
-
-            $duration = Duration::fromMicroseconds((int) (1000000 * (\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'])));
-        }
-
         return \sprintf(
             'Time: %s, Memory: %s',
             $duration->asString(),
             $this->bytesToString(\memory_get_peak_usage(true))
+        );
+    }
+
+    /**
+     * @throws TimeSinceStartOfRequestNotAvailableException
+     */
+    public function resourceUsageSinceStartOfRequest(): string
+    {
+        if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+            throw new TimeSinceStartOfRequestNotAvailableException(
+                'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not available'
+            );
+        }
+
+        if (!\is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
+            throw new TimeSinceStartOfRequestNotAvailableException(
+                'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not of type float'
+            );
+        }
+
+        return $this->resourceUsage(
+            Duration::fromMicroseconds(
+                (int) (1000000 * (\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']))
+            )
         );
     }
 

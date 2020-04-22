@@ -94,7 +94,7 @@ foreach (\range(0, 100000) as $i) {
     // ...
 }
 
-print (new ResourceUsageFormatter)->resourceUsage();
+print (new ResourceUsageFormatter)->resourceUsageSinceStartOfRequest();
 ```
 
 The code above yields the output below:

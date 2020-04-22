@@ -29,7 +29,7 @@ final class ResourceUsageFormatterTest extends TestCase
         $this->formatter = new ResourceUsageFormatter;
     }
 
-    public function testCanFormatWithExplicitDuration(): void
+    public function testCanFormatResourceUsage(): void
     {
         $this->assertStringMatchesFormat(
             'Time: 01:01, Memory: %s',
@@ -39,35 +39,37 @@ final class ResourceUsageFormatterTest extends TestCase
         );
     }
 
-    public function testCanFormatWithImplicitDuration(): void
+    public function testCanFormatResourceUsageSinceStartOfRequest(): void
     {
         $this->assertStringMatchesFormat(
             'Time: %s, Memory: %s',
-            $this->formatter->resourceUsage()
+            $this->formatter->resourceUsageSinceStartOfRequest()
         );
     }
 
     /**
      * @backupGlobals enabled
+     * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not available
      */
-    public function testCannotFormatWithImplicitDurationWhenRequestTimeFloatIsNotNotAvailable(): void
+    public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotAvailable(): void
     {
         unset($_SERVER['REQUEST_TIME_FLOAT']);
 
         $this->expectException(TimeSinceStartOfRequestNotAvailableException::class);
 
-        $this->formatter->resourceUsage();
+        $this->formatter->resourceUsageSinceStartOfRequest();
     }
 
     /**
      * @backupGlobals enabled
+     * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not valid
      */
-    public function testCannotFormatWithImplicitDurationWhenRequestTimeFloatIsNotNotValid(): void
+    public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotValid(): void
     {
         $_SERVER['REQUEST_TIME_FLOAT'] = 'string';
 
         $this->expectException(TimeSinceStartOfRequestNotAvailableException::class);
 
-        $this->formatter->resourceUsage();
+        $this->formatter->resourceUsageSinceStartOfRequest();
     }
 }
