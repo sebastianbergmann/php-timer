@@ -22,7 +22,7 @@ final class DurationTest extends TestCase
     {
         $duration = Duration::fromNanoseconds(1);
 
-        $this->assertSame(1, $duration->asNanoseconds());
+        $this->assertSame(1.0, $duration->asNanoseconds());
         $this->assertSame(1.0E-3, $duration->asMicroseconds());
         $this->assertSame(1.0E-6, $duration->asMilliseconds());
         $this->assertSame(1.0E-9, $duration->asSeconds());
@@ -32,7 +32,7 @@ final class DurationTest extends TestCase
     {
         $duration = Duration::fromMicroseconds(1);
 
-        $this->assertSame(1000, $duration->asNanoseconds());
+        $this->assertSame(1000.0, $duration->asNanoseconds());
         $this->assertSame(1.0, $duration->asMicroseconds());
         $this->assertSame(1.0E-3, $duration->asMilliseconds());
         $this->assertSame(1.0E-6, $duration->asSeconds());

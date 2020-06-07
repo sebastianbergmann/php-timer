@@ -15,7 +15,7 @@ namespace SebastianBergmann\Timer;
 final class Duration
 {
     /**
-     * @var int
+     * @var float
      */
     private $nanoseconds;
 
@@ -39,17 +39,17 @@ final class Duration
      */
     private $milliseconds;
 
-    public static function fromMicroseconds(int $microseconds): self
+    public static function fromMicroseconds(float $microseconds): self
     {
         return new self($microseconds * 1000);
     }
 
-    public static function fromNanoseconds(int $nanoseconds): self
+    public static function fromNanoseconds(float $nanoseconds): self
     {
         return new self($nanoseconds);
     }
 
-    private function __construct(int $nanoseconds)
+    private function __construct(float $nanoseconds)
     {
         $this->nanoseconds     = $nanoseconds;
         $timeInMilliseconds    = $nanoseconds / 1000000;
@@ -66,7 +66,7 @@ final class Duration
         $this->milliseconds    = (int) $milliseconds;
     }
 
-    public function asNanoseconds(): int
+    public function asNanoseconds(): float
     {
         return $this->nanoseconds;
     }

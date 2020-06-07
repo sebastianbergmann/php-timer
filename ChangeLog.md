@@ -2,6 +2,18 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [5.0.0] - 2020-06-07
+
+### Changed
+
+* Parameter type for `SebastianBergmann\Timer\Duration::fromMicroseconds()` was changed from `int` to `float` 
+* Parameter type for `SebastianBergmann\Timer\Duration::fromNanoseconds()` was changed from `int` to `float`
+* Return type for `SebastianBergmann\Timer\Duration::asNanoseconds()` was changed from `int` to `float`
+
+### Fixed
+
+* [#31](https://github.com/sebastianbergmann/php-timer/issues/31): Type Error on 32-bit systems (where `hrtime()` returns `float` instead of `int`)
+
 ## [4.0.0] - 2020-06-01
 
 ### Added
