@@ -1,7 +1,7 @@
 /.github        export-ignore
+/.phive         export-ignore
 /.php_cs.dist   export-ignore
 /build.xml      export-ignore
-/phive.xml      export-ignore
 /phpunit.xml    export-ignore
 /psalm.xml      export-ignore
 /tests          export-ignore
