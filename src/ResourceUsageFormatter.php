@@ -9,6 +9,11 @@
  */
 namespace SebastianBergmann\Timer;
 
+use function is_float;
+use function memory_get_peak_usage;
+use function microtime;
+use function sprintf;
+
 final class ResourceUsageFormatter
 {
     /**
@@ -22,10 +27,10 @@ final class ResourceUsageFormatter
 
     public function resourceUsage(Duration $duration): string
     {
-        return \sprintf(
+        return sprintf(
             'Time: %s, Memory: %s',
             $duration->asString(),
-            $this->bytesToString(\memory_get_peak_usage(true))
+            $this->bytesToString(memory_get_peak_usage(true))
         );
     }
 
@@ -40,7 +45,7 @@ final class ResourceUsageFormatter
             );
         }
 
-        if (!\is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
+        if (!is_float($_SERVER['REQUEST_TIME_FLOAT'])) {
             throw new TimeSinceStartOfRequestNotAvailableException(
                 'Cannot determine time at which the request started because $_SERVER[\'REQUEST_TIME_FLOAT\'] is not of type float'
             );
@@ -48,7 +53,7 @@ final class ResourceUsageFormatter
 
         return $this->resourceUsage(
             Duration::fromMicroseconds(
-                (1000000 * (\microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']))
+                (1000000 * (microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']))
             )
         );
     }
@@ -57,7 +62,7 @@ final class ResourceUsageFormatter
     {
         foreach (self::SIZES as $unit => $value) {
             if ($bytes >= $value) {
-                return \sprintf('%.2f %s', $bytes >= 1024 ? $bytes / $value : $bytes, $unit);
+                return sprintf('%.2f %s', $bytes >= 1024 ? $bytes / $value : $bytes, $unit);
             }
         }
 
