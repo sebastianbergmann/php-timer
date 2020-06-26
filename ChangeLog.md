@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [5.0.1] - 2020-06-26
+
+### Added
+
+* This component is now supported on PHP 8
+
 ## [5.0.0] - 2020-06-07
 
 ### Changed
@@ -103,6 +109,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 
+[5.0.1]: https://github.com/sebastianbergmann/diff/compare/5.0.0...5.0.1
+[5.0.0]: https://github.com/sebastianbergmann/diff/compare/4.0.0...5.0.0
 [4.0.0]: https://github.com/sebastianbergmann/diff/compare/3.1.4...4.0.0
 [3.1.4]: https://github.com/sebastianbergmann/diff/compare/3.1.3...3.1.4
 [3.1.3]: https://github.com/sebastianbergmann/diff/compare/3.1.2...3.1.3
