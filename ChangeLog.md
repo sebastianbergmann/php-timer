@@ -109,16 +109,16 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6, and PHP 7.0
 
-[5.0.1]: https://github.com/sebastianbergmann/diff/compare/5.0.0...5.0.1
-[5.0.0]: https://github.com/sebastianbergmann/diff/compare/4.0.0...5.0.0
-[4.0.0]: https://github.com/sebastianbergmann/diff/compare/3.1.4...4.0.0
-[3.1.4]: https://github.com/sebastianbergmann/diff/compare/3.1.3...3.1.4
-[3.1.3]: https://github.com/sebastianbergmann/diff/compare/3.1.2...3.1.3
-[3.1.2]: https://github.com/sebastianbergmann/diff/compare/3.1.1...3.1.2
-[3.1.1]: https://github.com/sebastianbergmann/diff/compare/3.1.0...3.1.1
-[3.1.0]: https://github.com/sebastianbergmann/diff/compare/3.0.0...3.1.0
-[3.0.0]: https://github.com/sebastianbergmann/diff/compare/2.1.2...3.0.0
-[2.1.2]: https://github.com/sebastianbergmann/diff/compare/2.1.1...2.1.2
-[2.1.1]: https://github.com/sebastianbergmann/diff/compare/2.1.0...2.1.1
-[2.1.0]: https://github.com/sebastianbergmann/diff/compare/2.0.0...2.1.0
-[2.0.0]: https://github.com/sebastianbergmann/diff/compare/1.0.9...2.0.0
+[5.0.1]: https://github.com/sebastianbergmann/php-timer/compare/5.0.0...5.0.1
+[5.0.0]: https://github.com/sebastianbergmann/php-timer/compare/4.0.0...5.0.0
+[4.0.0]: https://github.com/sebastianbergmann/php-timer/compare/3.1.4...4.0.0
+[3.1.4]: https://github.com/sebastianbergmann/php-timer/compare/3.1.3...3.1.4
+[3.1.3]: https://github.com/sebastianbergmann/php-timer/compare/3.1.2...3.1.3
+[3.1.2]: https://github.com/sebastianbergmann/php-timer/compare/3.1.1...3.1.2
+[3.1.1]: https://github.com/sebastianbergmann/php-timer/compare/3.1.0...3.1.1
+[3.1.0]: https://github.com/sebastianbergmann/php-timer/compare/3.0.0...3.1.0
+[3.0.0]: https://github.com/sebastianbergmann/php-timer/compare/2.1.2...3.0.0
+[2.1.2]: https://github.com/sebastianbergmann/php-timer/compare/2.1.1...2.1.2
+[2.1.1]: https://github.com/sebastianbergmann/php-timer/compare/2.1.0...2.1.1
+[2.1.0]: https://github.com/sebastianbergmann/php-timer/compare/2.0.0...2.1.0
+[2.0.0]: https://github.com/sebastianbergmann/php-timer/compare/1.0.9...2.0.0
