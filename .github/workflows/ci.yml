@@ -73,10 +73,6 @@ jobs:
           - "7.4"
           - "8.0"
 
-        dependencies:
-          - "lowest"
-          - "highest"
-
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v2"
@@ -97,12 +93,7 @@ jobs:
       - name: "Set COMPOSER_ROOT_VERSION environment variable"
         uses: "docker://ergebnis/composer-root-version-action:0.1.3"
 
-      - name: "Install lowest dependencies with composer"
-        if: "matrix.dependencies == 'lowest'"
-        run: "./tools/composer update --no-ansi --no-interaction --no-progress --prefer-lowest"
-
-      - name: "Install highest dependencies with composer"
-        if: "matrix.dependencies == 'highest'"
+      - name: "Install dependencies with composer"
         run: "./tools/composer update --no-ansi --no-interaction --no-progress"
 
       - name: "Run tests with phpunit/phpunit"
