@@ -28,9 +28,6 @@ jobs:
       - name: "Checkout"
         uses: "actions/checkout@v2"
 
-      - name: "Set COMPOSER_ROOT_VERSION environment variable"
-        uses: "docker://ergebnis/composer-root-version-action:0.1.3"
-
       - name: "Update dependencies with composer"
         run: "php7.3 ./tools/composer update --no-ansi --no-interaction --no-progress"
 
@@ -90,9 +87,6 @@ jobs:
           path: "~/.composer/cache"
           key: "php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}"
           restore-keys: "php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
-
-      - name: "Set COMPOSER_ROOT_VERSION environment variable"
-        uses: "docker://ergebnis/composer-root-version-action:0.1.3"
 
       - name: "Install dependencies with composer"
         run: "./tools/composer update --no-ansi --no-interaction --no-progress"
