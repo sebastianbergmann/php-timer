@@ -56,7 +56,7 @@ jobs:
           extensions: intl
 
       - name: Run roave/backward-compatibility-check
-        run: ./tools/roave-backward-compatibility-check --from=5.0.0
+        run: ./tools/roave-backward-compatibility-check --from=5.0.3
 
   tests:
     name: "Tests"
