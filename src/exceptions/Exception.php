@@ -9,6 +9,8 @@
  */
 namespace SebastianBergmann\Timer;
 
-interface Exception
+use Throwable;
+
+interface Exception extends Throwable
 {
 }
