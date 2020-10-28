@@ -22,10 +22,6 @@
             <arg value="update"/>
             <arg value="--force-accept-unsigned"/>
         </exec>
-
-        <exec executable="${basedir}/tools/composer" taskname="composer">
-            <arg value="self-update"/>
-        </exec>
     </target>
 </project>
 
