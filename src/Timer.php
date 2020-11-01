@@ -21,7 +21,7 @@ final class Timer
 
     public function start(): void
     {
-        $this->startTimes[] = (float) hrtime(true);
+        $this->startTimes[] = hrtime(true);
     }
 
     /**
@@ -29,12 +29,14 @@ final class Timer
      */
     public function stop(): Duration
     {
+        $current = hrtime(true);
+
         if (empty($this->startTimes)) {
             throw new NoActiveTimerException(
                 'Timer::start() has to be called before Timer::stop()'
             );
         }
 
-        return Duration::fromNanoseconds((float) hrtime(true) - array_pop($this->startTimes));
+        return Duration::fromNanoseconds((float) $current - (float) array_pop($this->startTimes));
     }
 }
