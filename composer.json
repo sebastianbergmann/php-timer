@@ -19,10 +19,10 @@
     },
     "prefer-stable": true,
     "require": {
-        "php": "^7.1"
+        "php": ">=7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^8.5"
     },
     "config": {
         "optimize-autoloader": true,
