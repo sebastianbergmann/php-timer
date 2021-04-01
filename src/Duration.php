@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 /*
  * This file is part of phpunit/php-timer.
  *
@@ -15,7 +16,7 @@ use function sprintf;
 /**
  * @psalm-immutable
  */
-final class Duration
+final class Duration implements DurationInterface
 {
     /**
      * @var float

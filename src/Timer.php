@@ -12,7 +12,7 @@ namespace SebastianBergmann\Timer;
 use function array_pop;
 use function hrtime;
 
-final class Timer
+final class Timer implements TimerInterface
 {
     /**
      * @psalm-var list<float>
@@ -24,9 +24,6 @@ final class Timer
         $this->startTimes[] = (float) hrtime(true);
     }
 
-    /**
-     * @throws NoActiveTimerException
-     */
     public function stop(): Duration
     {
         if (empty($this->startTimes)) {
