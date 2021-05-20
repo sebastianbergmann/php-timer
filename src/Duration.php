@@ -17,30 +17,15 @@ use function sprintf;
  */
 final class Duration
 {
-    /**
-     * @var float
-     */
-    private $nanoseconds;
+    private float $nanoseconds;
 
-    /**
-     * @var int
-     */
-    private $hours;
+    private int $hours;
 
-    /**
-     * @var int
-     */
-    private $minutes;
+    private int $minutes;
 
-    /**
-     * @var int
-     */
-    private $seconds;
+    private int $seconds;
 
-    /**
-     * @var int
-     */
-    private $milliseconds;
+    private int $milliseconds;
 
     public static function fromMicroseconds(float $microseconds): self
     {
