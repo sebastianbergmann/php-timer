@@ -8,36 +8,48 @@ name: "CI"
 
 jobs:
   coding-guidelines:
-    name: "Coding Guidelines"
+    name: Coding Guidelines
 
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: "Run friendsofphp/php-cs-fixer"
-        run: "./tools/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose"
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+
+      - name: Run friendsofphp/php-cs-fixer
+        run: ./tools/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   type-checker:
-    name: "Type Checker"
+    name: Type Checker
 
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v2"
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: "Update dependencies with composer"
-        run: "./tools/composer update --no-ansi --no-interaction --no-progress"
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
 
-      - name: "Run vimeo/psalm"
-        run: "./tools/psalm --config=.psalm/config.xml --no-progress --shepherd --show-info=false --stats"
+      - name: Update dependencies with composer
+        run: ./tools/composer update --no-interaction --no-ansi --no-progress
+
+      - name: Run vimeo/psalm
+        run: ./tools/psalm --config=.psalm/config.xml --no-progress --shepherd --show-info=false --stats
 
   tests:
-    name: "Tests"
+    name: Tests
 
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
@@ -48,7 +60,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3"
 
       - name: "Install PHP with extensions"
         uses: "shivammathur/setup-php@v2"
@@ -57,7 +69,7 @@ jobs:
           coverage: "pcov"
 
       - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v1"
+        uses: "actions/cache@v2"
         with:
           path: "~/.composer/cache"
           key: "php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}"
