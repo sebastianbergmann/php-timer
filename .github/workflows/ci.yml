@@ -6,6 +6,9 @@ on:
 
 name: "CI"
 
+permissions:
+  contents: read
+
 jobs:
   coding-guidelines:
     name: Coding Guidelines
