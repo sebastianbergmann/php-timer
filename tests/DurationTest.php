@@ -50,6 +50,9 @@ final class DurationTest extends TestCase
         $this->assertSame($string, $duration->asString());
     }
 
+    /**
+     * @psalm-return list<array{0: string, 1: float}>
+     */
     public function durationProvider(): array
     {
         return [
