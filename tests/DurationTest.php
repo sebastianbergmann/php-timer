@@ -41,6 +41,7 @@ final class DurationTest extends TestCase
 
     /**
      * @dataProvider durationProvider
+     *
      * @testdox Formats $microseconds microseconds as "$string"
      */
     public function testCanBeFormattedAsString(string $string, float $microseconds): void

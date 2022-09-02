@@ -49,6 +49,7 @@ final class ResourceUsageFormatterTest extends TestCase
 
     /**
      * @backupGlobals enabled
+     *
      * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not available
      */
     public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotAvailable(): void
@@ -62,6 +63,7 @@ final class ResourceUsageFormatterTest extends TestCase
 
     /**
      * @backupGlobals enabled
+     *
      * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not valid
      */
     public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotValid(): void
