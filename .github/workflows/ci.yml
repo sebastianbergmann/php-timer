@@ -25,7 +25,7 @@ jobs:
           php-version: 8.1
           coverage: none
 
-      - name: Run friendsofphp/php-cs-fixer
+      - name: Run PHP-CS-Fixer
         run: ./tools/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
 
   type-checker:
@@ -43,10 +43,10 @@ jobs:
           php-version: 8.1
           coverage: none
 
-      - name: Update dependencies with composer
+      - name: Install dependencies with Composer
         run: ./tools/composer update --no-interaction --no-ansi --no-progress
 
-      - name: Run vimeo/psalm
+      - name: Run Psalm
         run: ./tools/psalm --config=.psalm/config.xml --no-progress --shepherd --show-info=false --stats
 
   tests:
@@ -71,17 +71,17 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           coverage: "pcov"
 
-      - name: "Cache dependencies installed with composer"
+      - name: "Cache dependencies installed with Composer"
         uses: "actions/cache@v2"
         with:
           path: "~/.composer/cache"
           key: "php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}"
           restore-keys: "php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-"
 
-      - name: "Install dependencies with composer"
+      - name: "Install dependencies with Composer"
         run: "./tools/composer update --no-ansi --no-interaction --no-progress"
 
-      - name: "Run tests with phpunit/phpunit"
+      - name: "Run tests with PHPUnit"
         run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
 
       - name: "Send code coverage report to Codecov.io"
