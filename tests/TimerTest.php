@@ -9,19 +9,15 @@
  */
 namespace SebastianBergmann\Timer;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \SebastianBergmann\Timer\Timer
- *
- * @uses \SebastianBergmann\Timer\Duration
- */
+#[CoversClass(Timer::class)]
+#[UsesClass(Duration::class)]
 final class TimerTest extends TestCase
 {
-    /**
-     * @var Timer
-     */
-    private $timer;
+    private Timer $timer;
 
     protected function setUp(): void
     {

@@ -10,51 +10,20 @@
 namespace SebastianBergmann\Timer;
 
 use function round;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestDox;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \SebastianBergmann\Timer\Duration
- *
- * @uses \SebastianBergmann\Timer\Timer
- */
+#[CoversClass(Duration::class)]
+#[UsesClass(Timer::class)]
 final class DurationTest extends TestCase
 {
-    public function testCanBeCreatedFromNanoseconds(): void
-    {
-        $duration = Duration::fromNanoseconds(1);
-
-        $this->assertSame(1.0, $duration->asNanoseconds());
-        $this->assertSame(1.0E-3, $duration->asMicroseconds());
-        $this->assertSame(1.0E-6, $duration->asMilliseconds());
-        $this->assertSame(1.0E-9, $duration->asSeconds());
-    }
-
-    public function testCanBeCreatedFromMicroseconds(): void
-    {
-        $duration = Duration::fromMicroseconds(1);
-
-        $this->assertSame(1000.0, $duration->asNanoseconds());
-        $this->assertSame(1.0, $duration->asMicroseconds());
-        $this->assertSame(1.0E-3, $duration->asMilliseconds());
-        $this->assertSame(1.0E-6, $duration->asSeconds());
-    }
-
-    /**
-     * @dataProvider durationProvider
-     *
-     * @testdox Formats $microseconds microseconds as "$string"
-     */
-    public function testCanBeFormattedAsString(string $string, float $microseconds): void
-    {
-        $duration = Duration::fromMicroseconds($microseconds);
-
-        $this->assertSame($string, $duration->asString());
-    }
-
     /**
      * @psalm-return list<array{0: string, 1: float}>
      */
-    public function durationProvider(): array
+    public static function durationProvider(): array
     {
         return [
             ['00:00',        round((0 * 1000000))],
@@ -92,5 +61,34 @@ final class DurationTest extends TestCase
             ['01:00:59.010', round((3659.01 * 1000000))],
             ['01:59:59.999', round((7199.9999 * 1000000))],
         ];
+    }
+
+    public function testCanBeCreatedFromNanoseconds(): void
+    {
+        $duration = Duration::fromNanoseconds(1);
+
+        $this->assertSame(1.0, $duration->asNanoseconds());
+        $this->assertSame(1.0E-3, $duration->asMicroseconds());
+        $this->assertSame(1.0E-6, $duration->asMilliseconds());
+        $this->assertSame(1.0E-9, $duration->asSeconds());
+    }
+
+    public function testCanBeCreatedFromMicroseconds(): void
+    {
+        $duration = Duration::fromMicroseconds(1);
+
+        $this->assertSame(1000.0, $duration->asNanoseconds());
+        $this->assertSame(1.0, $duration->asMicroseconds());
+        $this->assertSame(1.0E-3, $duration->asMilliseconds());
+        $this->assertSame(1.0E-6, $duration->asSeconds());
+    }
+
+    #[DataProvider('durationProvider')]
+    #[TestDox('Formats $microseconds microseconds as "$string"')]
+    public function testCanBeFormattedAsString(string $string, float $microseconds): void
+    {
+        $duration = Duration::fromMicroseconds($microseconds);
+
+        $this->assertSame($string, $duration->asString());
     }
 }

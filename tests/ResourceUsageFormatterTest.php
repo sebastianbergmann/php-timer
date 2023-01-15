@@ -9,20 +9,18 @@
  */
 namespace SebastianBergmann\Timer;
 
+use PHPUnit\Framework\Attributes\BackupGlobals;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\TestDox;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \SebastianBergmann\Timer\ResourceUsageFormatter
- *
- * @uses \SebastianBergmann\Timer\Duration
- * @uses \SebastianBergmann\Timer\Timer
- */
+#[CoversClass(ResourceUsageFormatter::class)]
+#[UsesClass(Duration::class)]
+#[UsesClass(Timer::class)]
 final class ResourceUsageFormatterTest extends TestCase
 {
-    /**
-     * @var ResourceUsageFormatter
-     */
-    private $formatter;
+    private ResourceUsageFormatter $formatter;
 
     protected function setUp(): void
     {
@@ -47,11 +45,8 @@ final class ResourceUsageFormatterTest extends TestCase
         );
     }
 
-    /**
-     * @backupGlobals enabled
-     *
-     * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not available
-     */
+    #[BackupGlobals(true)]
+    #[TestDox('Cannot format resource usage since start of request when $_SERVER[\'REQUEST_TIME_FLOAT\'] is not available')]
     public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotAvailable(): void
     {
         unset($_SERVER['REQUEST_TIME_FLOAT']);
@@ -61,11 +56,8 @@ final class ResourceUsageFormatterTest extends TestCase
         $this->formatter->resourceUsageSinceStartOfRequest();
     }
 
-    /**
-     * @backupGlobals enabled
-     *
-     * @testdox Cannot format resource usage since start of request when $_SERVER['REQUEST_TIME_FLOAT'] is not valid
-     */
+    #[BackupGlobals(true)]
+    #[TestDox('Cannot format resource usage since start of request when $_SERVER[\'REQUEST_TIME_FLOAT\'] is not valid')]
     public function testCannotFormatResourceUsageSinceStartOfRequestWhenRequestTimeFloatIsNotValid(): void
     {
         $_SERVER['REQUEST_TIME_FLOAT'] = 'string';
