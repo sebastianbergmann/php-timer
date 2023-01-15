@@ -18,13 +18,9 @@ use function sprintf;
 final class Duration
 {
     private float $nanoseconds;
-
     private int $hours;
-
     private int $minutes;
-
     private int $seconds;
-
     private int $milliseconds;
 
     public static function fromMicroseconds(float $microseconds): self
