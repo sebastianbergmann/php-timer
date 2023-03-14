@@ -15,7 +15,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/sebastianbergmann/php-timer/issues"
+        "issues": "https://github.com/sebastianbergmann/php-timer/issues",
+        "security": "https://github.com/sebastianbergmann/php-timer/security/policy"
     },
     "prefer-stable": true,
     "require": {
