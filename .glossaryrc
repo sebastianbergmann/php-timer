@@ -1,0 +1,81 @@
+
+[files]
+exclude = tests
+        , vendor
+
+[domain]
+terms = 02d
+      , 03d
+      , 2f
+      , array
+      , as microseconds
+      , as milliseconds
+      , as nanoseconds
+      , as seconds
+      , as string
+      , at
+      , available
+      , be
+      , because
+      , before
+      , byte
+      , bytes
+      , bytes to string
+      , called
+      , cannot
+      , construct
+      , declare
+      , determine
+      , duration
+      , exception
+      , float
+      , from microseconds
+      , from nanoseconds
+      , gb
+      , has
+      , hours
+      , hours in milliseconds
+      , int
+      , is
+      , kb
+      , logic exception
+      , mb
+      , memory
+      , microseconds
+      , milliseconds
+      , minutes
+      , minutes in milliseconds
+      , nanoseconds
+      , no active timer exception
+      , not
+      , of
+      , readonly
+      , request
+      , request time float
+      , resource usage
+      , resource usage formatter
+      , resource usage since start of request
+      , result
+      , runtime exception
+      , sebastian bergmann
+      , seconds
+      , seconds in milliseconds
+      , server
+      , sizes
+      , start
+      , start times
+      , started
+      , stop
+      , strict types
+      , string
+      , the
+      , throwable
+      , time in milliseconds
+      , time since start of request not available exception
+      , timer
+      , to
+      , type
+      , unit
+      , value
+      , void
+      , which

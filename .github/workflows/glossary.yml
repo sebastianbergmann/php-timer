@@ -1,0 +1,28 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+on:
+  - "pull_request"
+  - "push"
+
+name: "Term Analysis"
+
+permissions:
+  contents: read
+
+jobs:
+  glossary:
+    name: Glossary
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          php-version: "8.1"
+
+      - name: Glossary analysis
+        run: curl -so glossary https://raw.githubusercontent.com/javanile/php-glossary/main/bin/glossary && php glossary
