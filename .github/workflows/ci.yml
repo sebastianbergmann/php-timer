@@ -6,6 +6,9 @@ on:
 
 name: "CI"
 
+env:
+  COMPOSER_ROOT_VERSION: "6.0-dev"
+
 permissions:
   contents: read
 
