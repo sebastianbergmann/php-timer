@@ -32,8 +32,8 @@ final class ResourceUsageFormatterTest extends TestCase
         $this->assertStringMatchesFormat(
             'Time: 01:01, Memory: %s',
             $this->formatter->resourceUsage(
-                Duration::fromMicroseconds(61000000)
-            )
+                Duration::fromMicroseconds(61000000),
+            ),
         );
     }
 
@@ -41,7 +41,7 @@ final class ResourceUsageFormatterTest extends TestCase
     {
         $this->assertStringMatchesFormat(
             'Time: %s, Memory: %s',
-            $this->formatter->resourceUsageSinceStartOfRequest()
+            $this->formatter->resourceUsageSinceStartOfRequest(),
         );
     }
 
