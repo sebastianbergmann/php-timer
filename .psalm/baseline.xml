@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="dev-master@">
-  <file src="src/ResourceUsageFormatter.php">
-    <TypeDoesNotContainType occurrences="1">
-      <code>is_float($_SERVER['REQUEST_TIME_FLOAT'])</code>
-    </TypeDoesNotContainType>
-  </file>
-</files>

@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 final class DurationTest extends TestCase
 {
     /**
-     * @psalm-return list<array{0: string, 1: float}>
+     * @return list<array{0: string, 1: float}>
      */
     public static function durationProvider(): array
     {

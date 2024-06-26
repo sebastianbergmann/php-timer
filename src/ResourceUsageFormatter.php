@@ -17,7 +17,7 @@ use function sprintf;
 final class ResourceUsageFormatter
 {
     /**
-     * @psalm-var array<string,int>
+     * @var array<string,int>
      */
     private const SIZES = [
         'GB' => 1073741824,
