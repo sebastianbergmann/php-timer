@@ -7,7 +7,7 @@ on:
 name: "CI"
 
 env:
-  COMPOSER_ROOT_VERSION: "7.0.x-dev"
+  COMPOSER_ROOT_VERSION: "8.0.x-dev"
 
 permissions:
   contents: read
@@ -61,7 +61,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
           - "8.4"
           - "8.5"
