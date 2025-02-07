@@ -18,13 +18,12 @@
         "issues": "https://github.com/sebastianbergmann/php-timer/issues",
         "security": "https://github.com/sebastianbergmann/php-timer/security/policy"
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.0-dev"
+        "phpunit/phpunit": "^12.0"
     },
     "config": {
         "platform": {
