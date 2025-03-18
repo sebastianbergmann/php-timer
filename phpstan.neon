@@ -3,3 +3,46 @@ parameters:
     paths:
         - src
         - tests
+
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    reportAlwaysTrueInLastCondition: true
+    reportPossiblyNonexistentConstantArrayOffset: true
+    reportPossiblyNonexistentGeneralArrayOffset: true
+    treatPhpDocTypesAsCertain: false
+
+    strictRules:
+        allRules: false
+        booleansInConditions: true
+        closureUsesThis: true
+        disallowedBacktick: true
+        disallowedEmpty: true
+        disallowedImplicitArrayCreation: true
+        disallowedLooseComparison: true
+        disallowedShortTernary: true
+        illegalConstructorMethodCall: true
+        matchingInheritedMethodNames: true
+        noVariableVariables: true
+        numericOperandsInArithmeticOperators: true
+        overwriteVariablesWithLoop: true
+        requireParentConstructorCall: true
+        strictArrayFilter: true
+        strictFunctionCalls: true
+        switchConditionsMatchingType: true
+        uselessCast: true
+
+    ergebnis:
+        allRules: false
+        final:
+            enabled: true
+        privateInFinalClass:
+            enabled: true
+
+    type_coverage:
+        declare: 100
+        return: 100
+        param: 100
+        property: 100
+        constant: 100
+
+includes:
+	- phar://phpstan.phar/conf/bleedingEdge.neon
