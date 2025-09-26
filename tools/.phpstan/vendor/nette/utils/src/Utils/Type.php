@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Nette\Utils;
 
 use Nette;
+use function array_map, array_search, array_splice, count, explode, implode, is_a, is_string, strcasecmp, strtolower, substr, trim;
+use const PHP_VERSION_ID;
 
 
 /**
@@ -260,8 +262,8 @@ final class Type
 				$subtypes,
 				fn($subtype) => Validators::isBuiltinType($type)
 					? strcasecmp($type, $subtype) === 0
-					: is_a($subtype, $type, allow_string: true)
-			)
+					: is_a($subtype, $type, allow_string: true),
+			),
 		);
 	}
 }

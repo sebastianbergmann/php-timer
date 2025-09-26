@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Nette\Utils;
 
 use Nette;
+use function is_array;
 
 
 /**
@@ -233,6 +234,7 @@ final class Iterables
 			$iterable instanceof \Iterator => $iterable,
 			$iterable instanceof \IteratorAggregate => self::toIterator($iterable->getIterator()),
 			is_array($iterable) => new \ArrayIterator($iterable),
+			default => throw new Nette\ShouldNotHappenException,
 		};
 	}
 }

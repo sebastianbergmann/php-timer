@@ -20,6 +20,10 @@ class ComposerStaticInitf9e7218f71d5874b5632927df4f72bd7
             'PHPStan\\ExtensionInstaller\\' => 27,
             'PHPStan\\' => 8,
         ),
+        'N' => 
+        array (
+            'Nette\\' => 6,
+        ),
         'E' => 
         array (
             'Ergebnis\\PHPStan\\Rules\\' => 23,
@@ -38,6 +42,10 @@ class ComposerStaticInitf9e7218f71d5874b5632927df4f72bd7
         'PHPStan\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpstan-strict-rules/src',
+        ),
+        'Nette\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nette/utils/src',
         ),
         'Ergebnis\\PHPStan\\Rules\\' => 
         array (
@@ -63,6 +71,7 @@ class ComposerStaticInitf9e7218f71d5874b5632927df4f72bd7
         'Nette\\NotImplementedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\NotSupportedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\OutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
+        'Nette\\ShouldNotHappenException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\SmartObject' => __DIR__ . '/..' . '/nette/utils/src/SmartObject.php',
         'Nette\\StaticClass' => __DIR__ . '/..' . '/nette/utils/src/StaticClass.php',
         'Nette\\UnexpectedValueException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
