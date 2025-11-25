@@ -533,7 +533,7 @@ class Arrays
 	 */
 	public static function toKey(mixed $value): int|string
 	{
-		return key([$value => null]);
+		return key(@[$value => null]);
 	}
 
 
