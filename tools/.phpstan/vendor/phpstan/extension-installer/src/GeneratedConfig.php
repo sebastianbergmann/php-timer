@@ -49,7 +49,7 @@ final class GeneratedConfig
         0 => 'config/extension.neon',
       ),
     ),
-    'version' => '2.0.2',
+    'version' => '2.1.0',
     'phpstanVersionConstraint' => '>=2.0.0.0-dev, <3.0.0.0-dev',
   ),
 );
