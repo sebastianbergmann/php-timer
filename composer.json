@@ -18,7 +18,6 @@
         "issues": "https://github.com/sebastianbergmann/php-timer/issues",
         "security": "https://github.com/sebastianbergmann/php-timer/security/policy"
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.4"
