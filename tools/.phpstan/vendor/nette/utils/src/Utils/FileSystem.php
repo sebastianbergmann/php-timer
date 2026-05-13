@@ -1,11 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * This file is part of the Nette Framework (https://nette.org)
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
-
-declare(strict_types=1);
 
 namespace Nette\Utils;
 
@@ -52,14 +50,15 @@ final class FileSystem
 		} elseif (is_dir($origin)) {
 			static::createDir($target);
 			foreach (new \FilesystemIterator($target) as $item) {
+				\assert($item instanceof \SplFileInfo);
 				static::delete($item->getPathname());
 			}
 
 			foreach ($iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($origin, \RecursiveDirectoryIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST) as $item) {
 				if ($item->isDir()) {
-					static::createDir($target . '/' . $iterator->getSubPathName());
+					static::createDir($target . '/' . $iterator->getSubPathname());
 				} else {
-					static::copy($item->getPathname(), $target . '/' . $iterator->getSubPathName());
+					static::copy($item->getPathname(), $target . '/' . $iterator->getSubPathname());
 				}
 			}
 		} else {
@@ -112,6 +111,7 @@ final class FileSystem
 			}
 		} elseif (is_dir($path)) {
 			foreach (new \FilesystemIterator($path) as $item) {
+				\assert($item instanceof \SplFileInfo);
 				static::delete($item->getPathname());
 			}
 
@@ -208,7 +208,7 @@ final class FileSystem
 
 
 	/**
-	 * Writes the string to a file.
+	 * Writes the string to a file. Creates the parent directory if it does not exist. Pass null as $mode to skip chmod.
 	 * @throws Nette\IOException  on error occurred
 	 */
 	public static function write(string $file, string $content, ?int $mode = 0o666): void
@@ -251,6 +251,7 @@ final class FileSystem
 			}
 		} elseif (is_dir($path)) {
 			foreach (new \FilesystemIterator($path) as $item) {
+				\assert($item instanceof \SplFileInfo);
 				static::makeWritable($item->getPathname(), $dirMode, $fileMode);
 			}
 
@@ -274,6 +275,19 @@ final class FileSystem
 	public static function isAbsolute(string $path): bool
 	{
 		return (bool) preg_match('#([a-z]:)?[/\\\]|[a-z][a-z0-9+.-]*://#Ai', $path);
+	}
+
+
+	/**
+	 * Determines whether the string is a valid cross-platform filename without any path information.
+	 */
+	public static function isValidFilename(string $name): bool
+	{
+		[$stem] = explode('.', $name, 2);
+		return $name !== '' && $name !== '.' && $name !== '..'
+			&& !preg_match('#[\x00-\x1F<>:"|?*\\\/]#', $name) // control and reserved characters
+			&& !str_ends_with($name, '.') && !str_ends_with($name, ' ') // trailing dots/spaces
+			&& !preg_match('#^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$#i', $stem); // Windows reserved device names
 	}
 
 

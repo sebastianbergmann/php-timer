@@ -1,11 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * This file is part of the Nette Framework (https://nette.org)
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
-
-declare(strict_types=1);
 
 namespace Nette\Utils;
 
@@ -14,13 +12,14 @@ use function array_slice, array_splice, count, is_int;
 
 
 /**
- * Provides the base class for a generic list (items can be accessed by index).
+ * Generic list with integer indices.
  * @template T
  * @implements \IteratorAggregate<int, T>
  * @implements \ArrayAccess<int, T>
  */
 class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+	/** @var list<T> */
 	private array $list = [];
 
 
@@ -41,7 +40,6 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
 
 
 	/**
-	 * Returns an iterator over all items.
 	 * @return \Iterator<int, T>
 	 */
 	public function &getIterator(): \Iterator
@@ -52,9 +50,6 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
 	}
 
 
-	/**
-	 * Returns items count.
-	 */
 	public function count(): int
 	{
 		return count($this->list);
@@ -63,7 +58,7 @@ class ArrayList implements \ArrayAccess, \Countable, \IteratorAggregate
 
 	/**
 	 * Replaces or appends an item.
-	 * @param  int|null  $index
+	 * @param  ?int  $index
 	 * @param  T  $value
 	 * @throws Nette\OutOfRangeException
 	 */
