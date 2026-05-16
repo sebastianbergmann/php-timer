@@ -23,7 +23,7 @@
         "php": ">=8.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.0"
+        "phpunit/phpunit": "^12.5.25"
     },
     "config": {
         "platform": {
