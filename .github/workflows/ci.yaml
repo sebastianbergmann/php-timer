@@ -6,6 +6,10 @@ on:
 
 name: CI
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   COMPOSER_ROOT_VERSION: 8.0.x-dev
   PHP_VERSION: 8.4
