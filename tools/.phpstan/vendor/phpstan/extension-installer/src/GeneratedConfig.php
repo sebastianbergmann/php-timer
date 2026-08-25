@@ -35,8 +35,8 @@ final class GeneratedConfig
         0 => 'rules.neon',
       ),
     ),
-    'version' => '2.0.11',
-    'phpstanVersionConstraint' => '>=2.1.39.0-dev, <3.0.0.0-dev',
+    'version' => '2.0.12',
+    'phpstanVersionConstraint' => '>=2.1.52.0-dev, <3.0.0.0-dev',
   ),
   'tomasvotruba/type-coverage' => 
   array (
@@ -49,8 +49,8 @@ final class GeneratedConfig
         0 => 'config/extension.neon',
       ),
     ),
-    'version' => '2.1.0',
-    'phpstanVersionConstraint' => '>=2.0.0.0-dev, <3.0.0.0-dev',
+    'version' => '2.3.4',
+    'phpstanVersionConstraint' => '>=2.2.0.0-dev, <3.0.0.0-dev',
   ),
 );
 
@@ -58,7 +58,7 @@ final class GeneratedConfig
 );
 
 	/** @var string|null */
-	public const PHPSTAN_VERSION_CONSTRAINT = '>=2.1.39.0-dev, <3.0.0.0-dev';
+	public const PHPSTAN_VERSION_CONSTRAINT = '>=2.2.0.0-dev, <3.0.0.0-dev';
 
 	private function __construct()
 	{
