@@ -12,7 +12,7 @@ concurrency:
 
 env:
   COMPOSER_ROOT_VERSION: 9.0.x-dev
-  PHP_VERSION: 8.4
+  PHP_VERSION: 8.5
 
 permissions:
   contents: read
@@ -114,6 +114,7 @@ jobs:
           - 8.4
           - 8.5
           - 8.6
+          - 8.7
 
     steps:
       - name: Checkout
@@ -201,7 +202,7 @@ jobs:
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
-          php-version: ${{ matrix.php-version }}
+          php-version: ${{ env.PHP_VERSION }}
           coverage: xdebug
           tools: none
 
