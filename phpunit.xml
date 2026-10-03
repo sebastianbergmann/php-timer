@@ -2,7 +2,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          cacheDirectory=".phpunit.cache"
-         executionOrder="depends,defects"
+         executionOrder="defects"
          requireCoverageMetadata="true"
          beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
@@ -10,6 +10,7 @@
          failOnPhpunitDeprecation="true"
          failOnRisky="true"
          failOnWarning="true"
+         warnWhenPhpIsNotConfiguredForDevelopment="true"
          colors="true">
     <testsuites>
         <testsuite name="default">
