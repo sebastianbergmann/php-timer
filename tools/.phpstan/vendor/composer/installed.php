@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '8.0.x-dev',
-        'version' => '8.0.9999999.9999999-dev',
-        'reference' => '58eca3ff3a0368e99310972924799f885924781c',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'b35041cffa70f63ee70ced6af96b5392bc285d23',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,18 +11,18 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '8.0.x-dev',
-            'version' => '8.0.9999999.9999999-dev',
-            'reference' => '58eca3ff3a0368e99310972924799f885924781c',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'b35041cffa70f63ee70ced6af96b5392bc285d23',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'ergebnis/phpstan-rules' => array(
-            'pretty_version' => '2.17.0',
-            'version' => '2.17.0.0',
-            'reference' => '5988e8fe66c09558c73824fce64123fdcd5afae2',
+            'pretty_version' => '2.17.1',
+            'version' => '2.17.1.0',
+            'reference' => '67c1bcd57666d30a3da0f744e4776c05178aa0c6',
             'type' => 'phpstan-extension',
             'install_path' => __DIR__ . '/../ergebnis/phpstan-rules',
             'aliases' => array(),
