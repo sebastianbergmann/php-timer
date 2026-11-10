@@ -28,8 +28,7 @@ final class TimerTest extends TestCase
     {
         $this->timer->start();
 
-        /* @noinspection UnnecessaryAssertionInspection */
-        $this->assertInstanceOf(Duration::class, $this->timer->stop());
+        $this->assertGreaterThanOrEqual(0.0, $this->timer->stop()->asNanoseconds());
     }
 
     public function testCannotBeStoppedWhenItWasNotStarted(): void
